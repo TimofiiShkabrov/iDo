@@ -18,13 +18,11 @@ class RegisterViewModel: ObservableObject {
     init() {}
     
     func register() {
-        guard validate()
-        else {
+        guard validate() else {
             return
         }
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
-            guard let userId = result?.user.uid
-            else {
+            guard let userId = result?.user.uid else {
                 return
             }
             self?.insertUserRecord(id: userId)
@@ -43,18 +41,15 @@ class RegisterViewModel: ObservableObject {
     private func validate() -> Bool {
         guard !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
               !email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-              !password.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-        else {
+              !password.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             return false
         }
         
-        guard email.contains("@") && email.contains(".")
-        else {
+        guard email.contains("@") && email.contains(".") else {
             return false
         }
         
-        guard password.count >= 6
-        else {
+        guard password.count >= 6 else {
             return false
         }
         return true

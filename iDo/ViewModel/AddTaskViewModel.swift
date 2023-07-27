@@ -22,8 +22,7 @@ class AddTaskViewModel: ObservableObject {
             return
         }
         // get current user id
-        guard let uId = Auth.auth().currentUser?.uid
-        else {
+        guard let uId = Auth.auth().currentUser?.uid else {
             return
         }
         
@@ -41,12 +40,10 @@ class AddTaskViewModel: ObservableObject {
     }
     
     var saveCheck: Bool {
-        guard !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-        else{
+        guard !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else{
             return false
         }
-        guard dueDate >= Date().addingTimeInterval(-86400)
-        else {
+        guard dueDate >= Date().addingTimeInterval(-86400) else {
             return false
         }
         return true

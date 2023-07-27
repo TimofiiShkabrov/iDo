@@ -16,8 +16,7 @@ class TaskViewModel: ObservableObject {
         var taskDone = task
         taskDone.setDone(!task.done)
         
-        guard let uid = Auth.auth().currentUser?.uid
-        else {
+        guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
         

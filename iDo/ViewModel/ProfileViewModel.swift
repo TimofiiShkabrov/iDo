@@ -15,8 +15,7 @@ class ProfileViewModel: ObservableObject {
     @Published var user: User? = nil
     
     func fetchUser() {
-        guard let userId = Auth.auth().currentUser?.uid
-        else {
+        guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
         let dataBase = Firestore.firestore()
