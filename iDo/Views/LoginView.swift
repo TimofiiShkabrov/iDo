@@ -10,14 +10,12 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject var loginViewModel = LoginViewModel()
-    @State var showRegisterView = false
-
     
-    private let backgroundColor = #colorLiteral(red: 0.4274509804, green: 0.3803921569, blue: 0.9450980392, alpha: 1)
-    private let circleColor = #colorLiteral(red: 0.4235294118, green: 0.4550011287, blue: 0.937254902, alpha: 1)
+    private let lightBlueColor = #colorLiteral(red: 0.4470588235, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+    private let darkBlueColor = #colorLiteral(red: 0.1607843137, green: 0.1843137255, blue: 0.9921568627, alpha: 1)
     
     var body: some View {
-        ZStack {
+        NavigationView {
             VStack {
                 
                 Spacer()
@@ -25,11 +23,9 @@ struct LoginView: View {
                 //Header
                 VStack {
                     HStack {
-                        Image(systemName: "checkmark")
+                        Image("logo-png")
                             .resizable()
-                            .foregroundColor(Color.green)
                             .frame(width: 35, height: 35)
-                            .bold()
                         Text("iDO")
                             .font(.system(size: 50))
                     }
@@ -40,7 +36,7 @@ struct LoginView: View {
                 Spacer()
                 
                 //Login form
-            
+                
                 VStack {
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
@@ -75,7 +71,6 @@ struct LoginView: View {
                     }
                     .padding(.horizontal, UIScreen.main.bounds.width / 10)
                     
-                    
                     VStack {
                         Button(action: {
                             loginViewModel.login()
@@ -85,7 +80,7 @@ struct LoginView: View {
                                 .frame(width: UIScreen.main.bounds.width / 3)
                                 .padding()
                         }
-                        .background(Color.green)
+                        .background(Color(lightBlueColor))
                         .clipShape(Capsule())
                         .padding(.top, 45)
                         
@@ -98,7 +93,7 @@ struct LoginView: View {
                                 .foregroundColor(Color.gray.opacity(0.5))
                             Button(action: {
                                 withAnimation {
-                                    showRegisterView = true
+                                    loginViewModel.showRegisterView = true
                                 }
                                 
                             }) {
@@ -112,9 +107,10 @@ struct LoginView: View {
                 
                 Spacer()
             }
-            
-            RegisterView(showRegisterView: $showRegisterView)
-                .offset(y: showRegisterView ? UIScreen.main.bounds.width / 10 : UIScreen.main.bounds.width * 2)
+            .sheet(isPresented: $loginViewModel.showRegisterView) {
+                RegisterView(showRegisterView: $loginViewModel.showRegisterView)
+                    .cornerRadius(50)
+            }
         }
     }
 }

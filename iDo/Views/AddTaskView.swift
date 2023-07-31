@@ -14,6 +14,12 @@ struct AddTaskView: View {
     
     var body: some View {
         VStack {
+            
+            HStack {
+                SwipeButtonView()
+            }
+            .padding()
+            
             Text("New task")
                 .font(.system(size: 32))
                 .bold()

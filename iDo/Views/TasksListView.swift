@@ -34,18 +34,27 @@ struct TasksListView: View {
                             .tint(.red)
                         }
                 }
-            }
-            .navigationTitle("Yor task")
-            .toolbar {
-                Button {
-                    // add new task
-                    tasksListViewModel.showAddTaskView = true
-                } label: {
-                    Image(systemName: "plus.circle")
+                HStack {
+                    
+                    Spacer()
+                    
+                    Button {
+                        // activate addTaskView
+                        tasksListViewModel.showAddTaskView = true
+                        
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 45, height: 45)
+                    }
+                    .padding()
                 }
             }
+            .navigationTitle("Yor task")
             .sheet(isPresented: $tasksListViewModel.showAddTaskView) {
                 AddTaskView(addTaskPresented: $tasksListViewModel.showAddTaskView)
+                    .cornerRadius(50)
             }
         }
     }
