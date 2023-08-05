@@ -17,6 +17,7 @@ struct TaskView: View {
             VStack(alignment: .leading) {
                 Text(task.title)
                     .font(.body)
+                    .padding(.bottom, 5)
                 Text("\(Date(timeIntervalSince1970: task.dueDate).formatted(date: .abbreviated, time: .shortened))")
                     .font(.subheadline)
                     .opacity(0.5)

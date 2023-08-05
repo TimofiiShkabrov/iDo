@@ -10,7 +10,11 @@ import SwiftUI
 struct AddTaskView: View {
     
     @StateObject var addTaskViewModel = AddTaskViewModel()
-    @Binding var addTaskPresented: Bool
+    @Binding var showAddTaskView: Bool
+    @StateObject var notificationManager = NotificationManager()
+    @State var showNotificationDatePicker = false
+    
+    private let lightBlueColor = #colorLiteral(red: 0.4470588235, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
     
     var body: some View {
         VStack {
@@ -27,21 +31,44 @@ struct AddTaskView: View {
             
             Form {
                 //Title
-                TextField("Enter task", text: $addTaskViewModel.title)
+                TextField("Enter the task name", text: $addTaskViewModel.title)
+                
                     .textFieldStyle(DefaultTextFieldStyle())
                     .font(.system(size: 25))
+                    .padding(10)
                 
                 //Do date
                 DatePicker("Due date", selection: $addTaskViewModel.dueDate)
                     .datePickerStyle(GraphicalDatePickerStyle())
                 
+                //Notification Date
+                Toggle(isOn: $showNotificationDatePicker) {
+                    Text("Remind yourself of the task")
+                        .padding(10)
+                        .bold()
+                }
+                
+                if showNotificationDatePicker { 
+                    DatePicker("Notification date", selection: $notificationManager.dateNotification)
+                            .datePickerStyle(GraphicalDatePickerStyle())
+                    }
+                
                 // Button
                 Button(action: {
                     if addTaskViewModel.saveCheck {
                         addTaskViewModel.save()
-                        addTaskPresented = false
+                        notificationManager.title = addTaskViewModel.title
+                        showAddTaskView = false
                     } else {
                         addTaskViewModel.showAlert = true
+                    }
+                    if showNotificationDatePicker {
+                        notificationManager.requestPermission()
+                        if notificationManager.dateNotification != addTaskViewModel.dueDate {
+                            notificationManager.scheduleNotification()
+                        } else {
+                            addTaskViewModel.showAlert = true
+                        }
                     }
                 }) {
                     Text("Save")
@@ -49,11 +76,11 @@ struct AddTaskView: View {
                         .frame(width: UIScreen.main.bounds.width / 1.3)
                         .padding()
                 }
-                .background(Color.green)
+                .background(Color(lightBlueColor))
                 .clipShape(Capsule())
             }
             .alert(isPresented: $addTaskViewModel.showAlert) {
-                Alert(title: Text("Ops!"), message: Text("Please fill in all fields and set a due date, no later than today."))
+                Alert(title: Text("Ops!"), message: Text("Please fill in all fields and set a due date no later than today and notification of the task should not be earlier than its creation."))
             }
         }
     }
@@ -61,7 +88,7 @@ struct AddTaskView: View {
 
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskView(addTaskPresented: Binding(get: {
+        AddTaskView(showAddTaskView: Binding(get: {
             return true
         }, set: { _ in
             

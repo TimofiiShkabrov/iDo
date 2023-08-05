@@ -32,6 +32,7 @@
 		224D17582A717435000545A2 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D17572A717435000545A2 /* UserModel.swift */; };
 		224D175A2A717464000545A2 /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D17592A717464000545A2 /* TasksModel.swift */; };
 		224D17612A71B736000545A2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D17602A71B736000545A2 /* Extensions.swift */; };
+		22883D382A7C0C7A00A39701 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22883D372A7C0C7A00A39701 /* NotificationsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		224D17572A717435000545A2 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		224D17592A717464000545A2 /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
 		224D17602A71B736000545A2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		22883D372A7C0C7A00A39701 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				224D172E2A716F8F000545A2 /* GoogleService-Info.plist */,
+				22883D372A7C0C7A00A39701 /* NotificationsManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				222CA8D92A75B93A003F6952 /* SwipeButtonView.swift in Sources */,
 				224D174C2A7173EC000545A2 /* LoginViewModel.swift in Sources */,
 				224D17562A717410000545A2 /* TaskViewModel.swift in Sources */,
+				22883D382A7C0C7A00A39701 /* NotificationsManager.swift in Sources */,
 				224D173C2A717354000545A2 /* TaskView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
