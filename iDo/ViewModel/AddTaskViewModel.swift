@@ -12,6 +12,7 @@ import FirebaseAuth
 class AddTaskViewModel: ObservableObject {
     
     @Published var title = ""
+    @Published var description = ""
     @Published var dueDate = Date()
     @Published var showAlert = false
     
@@ -28,7 +29,7 @@ class AddTaskViewModel: ObservableObject {
         
         // create model data
         let newId = UUID().uuidString
-        let newTask = TasksModel(id: newId, title: title, dueDate: dueDate.timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, done: false)
+        let newTask = TasksModel(id: newId, title: title, description: description, dueDate: dueDate.timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, done: false)
         
         // save model data
         let dataBase = Firestore.firestore()

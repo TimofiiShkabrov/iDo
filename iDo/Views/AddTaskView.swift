@@ -32,9 +32,14 @@ struct AddTaskView: View {
             Form {
                 //Title
                 TextField("Enter the task name", text: $addTaskViewModel.title)
-                
                     .textFieldStyle(DefaultTextFieldStyle())
                     .font(.system(size: 25))
+                    .padding(10)
+                
+                //Description
+                TextField("Enter a description for the task", text: $addTaskViewModel.description)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                    .font(.system(size: 18))
                     .padding(10)
                 
                 //Do date
@@ -42,7 +47,10 @@ struct AddTaskView: View {
                     .datePickerStyle(GraphicalDatePickerStyle())
                 
                 //Notification Date
-                Toggle(isOn: $showNotificationDatePicker) {
+                Toggle(isOn:
+                        $showNotificationDatePicker
+                    .animation(.spring())
+                ) {
                     Text("Remind yourself of the task")
                         .padding(10)
                         .bold()

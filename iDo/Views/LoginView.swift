@@ -16,27 +16,12 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                
-                Spacer()
+            ZStack {
                 
                 //Header
-                VStack {
-                    HStack {
-                        Image("logo-png")
-                            .resizable()
-                            .frame(width: 35, height: 35)
-                        Text("iDO")
-                            .font(.system(size: 50))
-                    }
-                    Text("Turn your ideas into action!")
-                        .fontWeight(.light)
-                }
-                
-                Spacer()
+                HeaderLoginView()
                 
                 //Login form
-                
                 VStack {
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
@@ -69,7 +54,7 @@ struct LoginView: View {
                             Divider()
                         }
                     }
-                    .padding(.horizontal, UIScreen.main.bounds.width / 10)
+                    .padding(.horizontal, 30)
                     
                     VStack {
                         Button(action: {
@@ -79,9 +64,9 @@ struct LoginView: View {
                                 .foregroundColor(.white)
                                 .frame(width: UIScreen.main.bounds.width / 3)
                                 .padding()
+                                .background(Color(lightBlueColor))
+                                .clipShape(Capsule())
                         }
-                        .background(Color(lightBlueColor))
-                        .clipShape(Capsule())
                         .padding(.top, 45)
                         
                         Text("or")
@@ -95,7 +80,6 @@ struct LoginView: View {
                                 withAnimation {
                                     loginViewModel.showRegisterView = true
                                 }
-                                
                             }) {
                                 Text("Sign Up")
                             }
@@ -104,8 +88,17 @@ struct LoginView: View {
                         .padding(.top)
                     }
                 }
-                
-                Spacer()
+                .padding(.vertical, 30)
+                .background(
+                    Image("lcbg")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .rotationEffect(Angle(degrees: 180))
+                        .opacity(0.3)
+                )
+                .cornerRadius(20)
+                .frame(width: UIScreen.main.bounds.width / 1.3, height: UIScreen.main.bounds.height / 2)
+                .padding(.top, UIScreen.main.bounds.width / 1.5)
             }
             .sheet(isPresented: $loginViewModel.showRegisterView) {
                 RegisterView(showRegisterView: $loginViewModel.showRegisterView)

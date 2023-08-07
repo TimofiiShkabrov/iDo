@@ -37,6 +37,6 @@ struct TaskView: View {
 
 struct TaskView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskView(task: .init(id: "123", title: "Aaaa", dueDate: Date().timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, done: true))
+        TaskView(task: .init(id: "123", title: "title", description: "description", dueDate: Date().timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, done: true))
     }
 }
