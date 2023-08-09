@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		222CA8D92A75B93A003F6952 /* SwipeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CA8D82A75B93A003F6952 /* SwipeButtonView.swift */; };
+		222EA31F2A82468200F4D888 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA31E2A82468200F4D888 /* MenuView.swift */; };
 		224D17162A716DCF000545A2 /* iDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D17152A716DCF000545A2 /* iDoApp.swift */; };
 		224D17182A716DCF000545A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D17172A716DCF000545A2 /* HomeView.swift */; };
 		224D171A2A716DCF000545A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224D17192A716DCF000545A2 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		222CA8D82A75B93A003F6952 /* SwipeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeButtonView.swift; sourceTree = "<group>"; };
+		222EA31E2A82468200F4D888 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		224D17122A716DCF000545A2 /* iDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		224D17152A716DCF000545A2 /* iDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDoApp.swift; sourceTree = "<group>"; };
 		224D17172A716DCF000545A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				224D17392A717346000545A2 /* TasksListView.swift */,
 				224D173B2A717354000545A2 /* TaskView.swift */,
 				2258978C2A7E85EB00B823BD /* TaskInformationView.swift */,
+				222EA31E2A82468200F4D888 /* MenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				22EC56172A8160AD0004201D /* HeaderTasksListViewModel.swift in Sources */,
 				224D17502A7173FB000545A2 /* AddTaskViewModel.swift in Sources */,
 				224D174A2A7173E3000545A2 /* HomeViewModel.swift in Sources */,
+				222EA31F2A82468200F4D888 /* MenuView.swift in Sources */,
 				22EC56152A8157260004201D /* HeaderTasksListView.swift in Sources */,
 				224D17362A717177000545A2 /* RegisterView.swift in Sources */,
 				224D17182A716DCF000545A2 /* HomeView.swift in Sources */,

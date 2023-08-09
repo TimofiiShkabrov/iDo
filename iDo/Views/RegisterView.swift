@@ -11,7 +11,6 @@ struct RegisterView: View {
     
     @StateObject var registerViewModel = RegisterViewModel()
     @Binding var showRegisterView: Bool
-    private let lightBlueColor = #colorLiteral(red: 0.4470588235, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
     
     var body: some View {
         VStack {
@@ -85,7 +84,7 @@ struct RegisterView: View {
                             .frame(width: UIScreen.main.bounds.width / 3)
                             .padding()
                     }
-                    .background(Color(lightBlueColor))
+                    .background(Color("lightBlueColor"))
                     .clipShape(Capsule())
                     .padding(.top, 45)
                 }

@@ -13,9 +13,7 @@ struct AddTaskView: View {
     @Binding var showAddTaskView: Bool
     @StateObject var notificationManager = NotificationManager()
     @State var showNotificationDatePicker = false
-    
-    private let lightBlueColor = #colorLiteral(red: 0.4470588235, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-    
+        
     var body: some View {
         VStack {
             
@@ -84,7 +82,7 @@ struct AddTaskView: View {
                         .frame(width: UIScreen.main.bounds.width / 1.3)
                         .padding()
                 }
-                .background(Color(lightBlueColor))
+                .background(Color("lightBlueColor"))
                 .clipShape(Capsule())
             }
             .alert(isPresented: $addTaskViewModel.showAlert) {
