@@ -15,6 +15,7 @@ class AddTaskViewModel: ObservableObject {
     @Published var description = ""
     @Published var dueDate = Date()
     @Published var showAlert = false
+    @Published var showAddTaskView = false
     
     init() {}
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		222CA8D92A75B93A003F6952 /* SwipeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CA8D82A75B93A003F6952 /* SwipeButtonView.swift */; };
 		222EA31F2A82468200F4D888 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA31E2A82468200F4D888 /* MenuView.swift */; };
+		223D5D732A85393B00564332 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D5D722A85393B00564332 /* MenuViewModel.swift */; };
 		224D17162A716DCF000545A2 /* iDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D17152A716DCF000545A2 /* iDoApp.swift */; };
 		224D17182A716DCF000545A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D17172A716DCF000545A2 /* HomeView.swift */; };
 		224D171A2A716DCF000545A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224D17192A716DCF000545A2 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		222CA8D82A75B93A003F6952 /* SwipeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeButtonView.swift; sourceTree = "<group>"; };
 		222EA31E2A82468200F4D888 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		223D5D722A85393B00564332 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		224D17122A716DCF000545A2 /* iDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		224D17152A716DCF000545A2 /* iDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDoApp.swift; sourceTree = "<group>"; };
 		224D17172A716DCF000545A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				224D17552A717410000545A2 /* TaskViewModel.swift */,
 				2274B8382A7FA4020048C067 /* TaskInformationViewModel.swift */,
 				22EC56162A8160AD0004201D /* HeaderTasksListViewModel.swift */,
+				223D5D722A85393B00564332 /* MenuViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				2274B8392A7FA4020048C067 /* TaskInformationViewModel.swift in Sources */,
 				224D17312A716FB2000545A2 /* LoginView.swift in Sources */,
 				224D17612A71B736000545A2 /* Extensions.swift in Sources */,
+				223D5D732A85393B00564332 /* MenuViewModel.swift in Sources */,
 				224D175A2A717464000545A2 /* TasksModel.swift in Sources */,
 				22EC56172A8160AD0004201D /* HeaderTasksListViewModel.swift in Sources */,
 				224D17502A7173FB000545A2 /* AddTaskViewModel.swift in Sources */,

@@ -9,12 +9,12 @@ import SwiftUI
 import FirebaseFirestoreSwift
 
 struct TasksListView: View {
-    @StateObject var headerTasksListViewModel = HeaderTasksListViewModel()
+    @StateObject var addTaskViewModel = AddTaskViewModel()
     @StateObject var tasksListViewModel: TasksListViewModel
     @FirestoreQuery var tasks: [TasksModel]
     
     @State private var shortByDateAdded = true
-        
+    
     private let userId: String
     
     init(userId: String) {
@@ -24,85 +24,64 @@ struct TasksListView: View {
     }
     
     var body: some View {
-        ZStack {
+        NavigationView {
             VStack {
-                HeaderTasksListView(headerTasksListViewModel: headerTasksListViewModel)
-                    .ignoresSafeArea()
-                    .shadow(radius: 5)
-                
-                NavigationView {
-                    VStack {
-                        Button {
-                            shortByDateAdded.toggle()
-                        } label: {
-                            HStack {
-                                HStack {
-                                    Text("Sort by date added")
-                                        .foregroundColor(.white)
-                                    Image(systemName: "chevron.right.circle.fill")
-                                        .foregroundColor(.white)
-                                        .rotationEffect(Angle(degrees: (shortByDateAdded ? 90 : -90)))
-                                }
-                                .padding(.vertical, 10)
-                                .padding(.horizontal)
-                                .background(Color("lightBlueColor").opacity(0.8))
-                                .cornerRadius(10)
-                                
-                                Spacer()
-                            }
-                        }
-                        .padding(.top)
-                        .padding(.horizontal)
-                        
-                        List(tasks.sorted(by: shortByDateAdded ? { $0.createdDate > $1.createdDate } : { $0.createdDate < $1.createdDate })) { item in
-                            TaskView(task: item)
-                                .swipeActions {
-                                    Button(action: {
-                                        tasksListViewModel.delete(id: item.id)
-                                    }) {
-                                        Text("Delete")
-                                    }
-                                    .tint(.red)
-                                }
-                        }
-                        
+                Button {
+                    shortByDateAdded.toggle()
+                } label: {
+                    HStack {
                         HStack {
-                            
-                            Spacer()
-                            
-                            Button {
-                                // activate addTaskView
-                                tasksListViewModel.showAddTaskView = true
-                                
-                            } label: {
-                                Image(systemName: "plus.circle")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 45, height: 45)
-                                    .foregroundColor(Color("lightBlueColor"))
-                                
-                            }
-                            .padding()
+                            Text("Sort by date added")
+                                .foregroundColor(.white)
+                            Image(systemName: "chevron.right.circle.fill")
+                                .foregroundColor(.white)
+                                .rotationEffect(Angle(degrees: (shortByDateAdded ? 90 : -90)))
                         }
-                    }
-                    .sheet(isPresented: $tasksListViewModel.showAddTaskView) {
-                        AddTaskView(showAddTaskView: $tasksListViewModel.showAddTaskView)
-                            .cornerRadius(50)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal)
+                        .background(Color("lightBlueColor").opacity(0.8))
+                        .cornerRadius(10)
+                        
+                        Spacer()
                     }
                 }
-            }
-            HStack {
-                Spacer()
-                VStack {
-                    MenuView()
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 1.2)
-                        .shadow(radius: 5)
-                        .cornerRadius(20)
-                        .offset(x: headerTasksListViewModel.showMenu ? UIScreen.main.bounds.width / 3 : UIScreen.main.bounds.width * 1.1)
-                        .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
+                .padding(.top)
+                .padding(.horizontal)
+                
+                List(tasks.sorted(by: shortByDateAdded ? { $0.createdDate > $1.createdDate } : { $0.createdDate < $1.createdDate })) { item in
+                    TaskView(task: item)
+                        .swipeActions {
+                            Button(action: {
+                                tasksListViewModel.delete(id: item.id)
+                            }) {
+                                Text("Delete")
+                            }
+                            .tint(.red)
+                        }
+                }
+                
+                HStack {
                     
                     Spacer()
+                    
+                    Button {
+                        // activate addTaskView
+                        addTaskViewModel.showAddTaskView = true
+                        
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 45, height: 45)
+                            .foregroundColor(Color("lightBlueColor"))
+                        
+                    }
+                    .padding()
                 }
+            }
+            .sheet(isPresented: $addTaskViewModel.showAddTaskView) {
+                AddTaskView(showAddTaskView: $addTaskViewModel.showAddTaskView)
+                    .cornerRadius(50)
             }
         }
     }

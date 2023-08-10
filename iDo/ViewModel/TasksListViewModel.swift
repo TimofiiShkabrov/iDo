@@ -9,9 +9,7 @@ import Foundation
 import FirebaseFirestore
 
 class TasksListViewModel: ObservableObject {
-    
-    @Published var showAddTaskView = false
-    
+        
     private let userId: String
     
     init(userId: String) {

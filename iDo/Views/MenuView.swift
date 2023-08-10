@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct MenuView: View {
+    
+    @StateObject var menuViewModel = MenuViewModel()
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Button {
                     // activate addTaskView
-                    
                     
                 } label: {
                     Image(systemName: "plus.circle")

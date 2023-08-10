@@ -12,15 +12,14 @@ struct HeaderTasksListView: View {
     @StateObject var headerTasksListViewModel: HeaderTasksListViewModel
     
     var body: some View {
-        ZStack {
-            VStack {
+            ZStack {
                 Spacer()
                 HStack {
                     Text("Tasks".uppercased())
                         .foregroundColor(Color.white)
                         .font(.title)
                         .bold()
-                        .padding()
+                        .padding(.horizontal)
                     Spacer()
                     Button(action: {
                         //
@@ -31,17 +30,17 @@ struct HeaderTasksListView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 45, height: 45)
                             .foregroundColor(Color.white)
-                            .padding()
+                            .padding(.horizontal)
                     }
                 }
+                .padding(.bottom, -50)
                 .offset(x: headerTasksListViewModel.showMenu ? -UIScreen.main.bounds.width / 1.35 : 0)
                 .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
 
             }
             .frame(width: UIScreen.main.bounds.width, height: 120)
-            .background(Image("lcbg").resizable().aspectRatio(contentMode: .fill))
+            .background(Image("lcbg").resizable())
             .cornerRadius(20)
-        }
     }
 }
 

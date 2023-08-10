@@ -20,7 +20,7 @@ struct HeaderLoginView: View {
                     Image("logo-png")
                         .resizable()
                         .shadow(color: Color.white, radius: 7)
-                    .frame(width: 35, height: 35)
+                        .frame(width: 35, height: 35)
                     Text("iDO")
                         .font(.system(size: 50))
                 }
