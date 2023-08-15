@@ -13,6 +13,27 @@ struct TaskView: View {
     let task: TasksModel
     
     var body: some View {
+        if task.done {
+            SingleTaskView(task: task)
+                .opacity(0.5)
+        } else {
+            SingleTaskView(task: task)
+        }
+    }
+}
+
+struct TaskView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskView(task: .init(id: "123", title: "title", description: "description", dueDate: Date().timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, done: true))
+    }
+}
+
+struct SingleTaskView: View {
+    
+    @StateObject var taskViewModel = TaskViewModel()
+    let task: TasksModel
+    
+    var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(task.title)
@@ -32,11 +53,5 @@ struct TaskView: View {
                     .foregroundColor(task.done ? Color.green : Color.red)
             }
         }
-    }
-}
-
-struct TaskView_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskView(task: .init(id: "123", title: "title", description: "description", dueDate: Date().timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, done: true))
     }
 }

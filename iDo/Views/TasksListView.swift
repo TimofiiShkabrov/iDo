@@ -10,6 +10,7 @@ import FirebaseFirestoreSwift
 
 struct TasksListView: View {
     @StateObject var addTaskViewModel = AddTaskViewModel()
+    @StateObject var homeViewModel = HomeViewModel()
     @StateObject var tasksListViewModel: TasksListViewModel
     @FirestoreQuery var tasks: [TasksModel]
     
@@ -45,7 +46,7 @@ struct TasksListView: View {
                     
                     Button {
                         // activate addTaskView
-                        AddTaskView()
+                        
                     } label: {
                         Image(systemName: "plus.circle")
                             .resizable()
@@ -55,7 +56,6 @@ struct TasksListView: View {
                     }
                 }
             }
-            .padding(.top)
             .padding(.horizontal)
             
             List(tasks.sorted(by: shortByDateAdded ? { $0.createdDate > $1.createdDate } : { $0.createdDate < $1.createdDate })) { item in

@@ -15,7 +15,6 @@ struct HomeView: View {
     
     var body: some View {
         if homeViewModel.isSignedIn, !homeViewModel.currenUserId.isEmpty {
-            
             ZStack {
                 HStack {
                     VStack(alignment: .leading, spacing: 15) {
