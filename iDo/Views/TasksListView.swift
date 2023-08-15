@@ -10,12 +10,9 @@ import FirebaseFirestoreSwift
 
 struct TasksListView: View {
     @StateObject var addTaskViewModel = AddTaskViewModel()
-    @StateObject var homeViewModel = HomeViewModel()
     @StateObject var tasksListViewModel: TasksListViewModel
     @FirestoreQuery var tasks: [TasksModel]
-    
-    @State private var shortByDateAdded = true
-    
+        
     private let userId: String
     
     init(userId: String) {
@@ -27,7 +24,7 @@ struct TasksListView: View {
     var body: some View {
         VStack {
             Button {
-                shortByDateAdded.toggle()
+                tasksListViewModel.shortByDateAdded.toggle()
             } label: {
                 HStack {
                     HStack {
@@ -35,7 +32,7 @@ struct TasksListView: View {
                             .foregroundColor(.white)
                         Image(systemName: "chevron.right.circle.fill")
                             .foregroundColor(.white)
-                            .rotationEffect(Angle(degrees: (shortByDateAdded ? 90 : -90)))
+                            .rotationEffect(Angle(degrees: (tasksListViewModel.shortByDateAdded ? 90 : -90)))
                     }
                     .padding(.vertical, 10)
                     .padding(.horizontal)
@@ -46,10 +43,7 @@ struct TasksListView: View {
                     
                     Button {
                         // activate addTaskView
-                        self.homeViewModel.indexPage = 1
-                        withAnimation {
-                            self.homeViewModel.showMenu.toggle()
-                        }
+                        
                     } label: {
                         Image(systemName: "plus.circle")
                             .resizable()
@@ -61,7 +55,7 @@ struct TasksListView: View {
             }
             .padding(.horizontal)
             
-            List(tasks.sorted(by: shortByDateAdded ? { $0.createdDate > $1.createdDate } : { $0.createdDate < $1.createdDate })) { item in
+            List(tasks.sorted(by: tasksListViewModel.shortByDateAdded ? { $0.createdDate > $1.createdDate } : { $0.createdDate < $1.createdDate })) { item in
                 TaskView(task: item)
                     .swipeActions {
                         Button(action: {

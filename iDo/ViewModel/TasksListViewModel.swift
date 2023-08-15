@@ -9,6 +9,8 @@ import Foundation
 import FirebaseFirestore
 
 class TasksListViewModel: ObservableObject {
+    
+    @Published var shortByDateAdded = true
         
     private let userId: String
     
