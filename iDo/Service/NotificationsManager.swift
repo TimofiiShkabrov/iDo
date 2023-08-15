@@ -12,6 +12,7 @@ class NotificationManager: ObservableObject {
     
     @Published var title = ""
     @Published var dateNotification = Date()
+    @Published var showNotificationDatePicker = false
 
     init() {}
     

@@ -10,23 +10,10 @@ import SwiftUI
 struct AddTaskView: View {
     
     @StateObject var addTaskViewModel = AddTaskViewModel()
-    @Binding var showAddTaskView: Bool
     @StateObject var notificationManager = NotificationManager()
-    @State var showNotificationDatePicker = false
         
     var body: some View {
         VStack {
-            
-            HStack {
-                SwipeButtonView()
-            }
-            .padding()
-            
-            Text("New task")
-                .font(.system(size: 32))
-                .bold()
-                .padding(.top)
-            
             Form {
                 //Title
                 TextField("Enter the task name", text: $addTaskViewModel.title)
@@ -46,7 +33,7 @@ struct AddTaskView: View {
                 
                 //Notification Date
                 Toggle(isOn:
-                        $showNotificationDatePicker
+                        $notificationManager.showNotificationDatePicker
                     .animation(.spring())
                 ) {
                     Text("Remind yourself of the task")
@@ -54,7 +41,7 @@ struct AddTaskView: View {
                         .bold()
                 }
                 
-                if showNotificationDatePicker { 
+                if notificationManager.showNotificationDatePicker {
                     DatePicker("Notification date", selection: $notificationManager.dateNotification)
                             .datePickerStyle(GraphicalDatePickerStyle())
                     }
@@ -64,11 +51,11 @@ struct AddTaskView: View {
                     if addTaskViewModel.saveCheck {
                         addTaskViewModel.save()
                         notificationManager.title = addTaskViewModel.title
-                        showAddTaskView = false
+                        addTaskViewModel.showAddTaskView = false
                     } else {
                         addTaskViewModel.showAlert = true
                     }
-                    if showNotificationDatePicker {
+                    if notificationManager.showNotificationDatePicker {
                         notificationManager.requestPermission()
                         if notificationManager.dateNotification != addTaskViewModel.dueDate {
                             notificationManager.scheduleNotification()
@@ -94,10 +81,11 @@ struct AddTaskView: View {
 
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskView(showAddTaskView: Binding(get: {
-            return true
-        }, set: { _ in
-            
-        }))
+//        AddTaskView(showAddTaskView: Binding(get: {
+//            return true
+//        }, set: { _ in
+//
+//        }))
+        AddTaskView()
     }
 }

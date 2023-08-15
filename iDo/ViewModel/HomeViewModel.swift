@@ -11,6 +11,8 @@ import FirebaseAuth
 class HomeViewModel: ObservableObject {
     
     @Published var currenUserId: String = ""
+    @Published var indexPage = 0
+    @Published var showMenu = false
     
     private var handler: AuthStateDidChangeListenerHandle?
     

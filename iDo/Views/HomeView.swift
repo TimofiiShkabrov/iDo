@@ -13,9 +13,6 @@ struct HomeView: View {
     @StateObject var addTaskViewModel = AddTaskViewModel()
     @StateObject var headerTasksListViewModel = HeaderTasksListViewModel()
     
-    @State var index = 0
-    @State var show = false
-    
     var body: some View {
         if homeViewModel.isSignedIn, !homeViewModel.currenUserId.isEmpty {
             
@@ -36,9 +33,9 @@ struct HomeView: View {
                         
                         Button {
                             // activate Information
-                            self.index = 0
+                            self.homeViewModel.indexPage = 0
                             withAnimation {
-                                self.show.toggle()
+                                self.homeViewModel.showMenu.toggle()
                             }
                         } label: {
                             Image(systemName: "text.line.first.and.arrowtriangle.forward")
@@ -54,9 +51,9 @@ struct HomeView: View {
                         
                         Button {
                             // activate addTaskView
-                            self.index = 1
+                            self.homeViewModel.indexPage = 1
                             withAnimation {
-                                self.show.toggle()
+                                self.homeViewModel.showMenu.toggle()
                             }
                         } label: {
                             Image(systemName: "plus.circle")
@@ -73,9 +70,9 @@ struct HomeView: View {
                         
                         Button {
                             // activate Profile
-                            self.index = 2
+                            self.homeViewModel.indexPage = 2
                             withAnimation {
-                                self.show.toggle()
+                                self.homeViewModel.showMenu.toggle()
                             }
                         } label: {
                             Image(systemName: "person.circle")
@@ -92,9 +89,9 @@ struct HomeView: View {
                         
                         Button {
                             // activate Information
-                            self.index = 3
+                            self.homeViewModel.indexPage = 3
                             withAnimation {
-                                self.show.toggle()
+                                self.homeViewModel.showMenu.toggle()
                             }
                         } label: {
                             Image(systemName: "info.bubble")
@@ -120,15 +117,15 @@ struct HomeView: View {
                         Button {
                             //
                             withAnimation {
-                                self.show.toggle()
+                                self.homeViewModel.showMenu.toggle()
                             }
                         } label: {
-                            Image(systemName: self.show ? "xmark" : "line.horizontal.3")
+                            Image(systemName: self.homeViewModel.showMenu ? "xmark" : "line.horizontal.3")
                                 .resizable()
                                 .frame(width: 25, height: 25)
-                                .foregroundColor(self.show ? Color.red : Color.white)
+                                .foregroundColor(self.homeViewModel.showMenu ? Color.red : Color.white)
                         }
-                        Text(self.index == 0 ? "My tasks" : (self.index == 1 ? "Add new task" : (self.index == 2 ? "Profile" : "Information")))
+                        Text(self.homeViewModel.indexPage == 0 ? "My tasks" : (self.homeViewModel.indexPage == 1 ? "Add new task" : (self.homeViewModel.indexPage == 2 ? "Profile" : "Information")))
                             .font(.title)
                             .bold()
                             .padding(.horizontal)
@@ -142,11 +139,11 @@ struct HomeView: View {
                     
                     GeometryReader { _ in
                         VStack {
-                            if self.index == 0 {
+                            if self.homeViewModel.indexPage == 0 {
                                 TasksListView(userId: homeViewModel.currenUserId)
-                            } else if self.index == 1 {
-                                AddTaskView(showAddTaskView: $addTaskViewModel.showAddTaskView)
-                            } else if self.index == 2 {
+                            } else if self.homeViewModel.indexPage == 1 {
+                                AddTaskView()
+                            } else if self.homeViewModel.indexPage == 2 {
                                 ProfileView()
                             } else {
                                 Text("Information")
@@ -155,9 +152,9 @@ struct HomeView: View {
                     }
                 }
                 .padding(.top, 50)
-                .cornerRadius(self.show ? 20 : 0)
-                .scaleEffect(self.show ? 0.8 : 1)
-                .offset(x: self.show ? UIScreen.main.bounds.width / 2 : 0)
+                .cornerRadius(self.homeViewModel.showMenu ? 20 : 0)
+                .scaleEffect(self.homeViewModel.showMenu ? 0.8 : 1)
+                .offset(x: self.homeViewModel.showMenu ? UIScreen.main.bounds.width / 2 : 0)
             }
             .ignoresSafeArea(edges: .top)
 
