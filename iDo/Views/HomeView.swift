@@ -154,9 +154,28 @@ struct HomeView: View {
                 .cornerRadius(self.homeViewModel.showMenu ? 20 : 0)
                 .scaleEffect(self.homeViewModel.showMenu ? 0.8 : 1)
                 .offset(x: self.homeViewModel.showMenu ? UIScreen.main.bounds.width / 2 : 0)
+                
+                if self.homeViewModel.indexPage == 0 {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            Button {
+                                // activate addTaskView
+                                self.homeViewModel.indexPage = 1
+                            } label: {
+                                Image(systemName: "plus.circle.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 45, height: 45)
+                                    .foregroundColor(Color("lightBlueColor"))
+                            }
+                        }
+                        .padding()
+                    }
+                }
             }
             .ignoresSafeArea(edges: .top)
-
         } else {
             LoginView()
         }

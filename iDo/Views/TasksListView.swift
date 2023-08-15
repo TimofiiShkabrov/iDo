@@ -9,10 +9,12 @@ import SwiftUI
 import FirebaseFirestoreSwift
 
 struct TasksListView: View {
+    
+    @StateObject var homeViewModel = HomeViewModel()
     @StateObject var addTaskViewModel = AddTaskViewModel()
     @StateObject var tasksListViewModel: TasksListViewModel
     @FirestoreQuery var tasks: [TasksModel]
-        
+    
     private let userId: String
     
     init(userId: String) {
@@ -40,17 +42,6 @@ struct TasksListView: View {
                     .cornerRadius(10)
                     
                     Spacer()
-                    
-                    Button {
-                        // activate addTaskView
-                        
-                    } label: {
-                        Image(systemName: "plus.circle")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(Color("lightBlueColor"))
-                    }
                 }
             }
             .padding(.horizontal)
