@@ -46,7 +46,10 @@ struct TasksListView: View {
                     
                     Button {
                         // activate addTaskView
-                        
+                        self.homeViewModel.indexPage = 1
+                        withAnimation {
+                            self.homeViewModel.showMenu.toggle()
+                        }
                     } label: {
                         Image(systemName: "plus.circle")
                             .resizable()
