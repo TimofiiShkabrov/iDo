@@ -156,7 +156,7 @@ struct HomeView: View {
                 }
                 .padding(.top, 50)
                 .cornerRadius(self.show ? 20 : 0)
-                .scaleEffect(self.show ? 0.9 : 1)
+                .scaleEffect(self.show ? 0.8 : 1)
                 .offset(x: self.show ? UIScreen.main.bounds.width / 2 : 0)
             }
             .ignoresSafeArea(edges: .top)
