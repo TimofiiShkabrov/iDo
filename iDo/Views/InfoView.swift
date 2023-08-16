@@ -8,12 +8,31 @@
 import SwiftUI
 
 struct InfoView: View {
+    
+    @StateObject var infoViewModel = InfoViewModel()
+    
     var body: some View {
         VStack {
+            HStack {
+                Text("Select document:")
+                Spacer()
+            }
+            .padding(.horizontal)
+            .padding(.top)
             ScrollView(.horizontal) {
                 HStack {
-                    Text("INFO")
-                    Text("INFO")
+                    Button {
+                        //
+                        
+                    } label: {
+                        Text("Privacy Policy")
+                    }
+                    Button {
+                        //
+                        
+                    } label: {
+                        Text("Terms of Use")
+                    }
                     Text("INFO")
                     Text("INFO")
                     Text("INFO")
@@ -21,7 +40,11 @@ struct InfoView: View {
                     Text("INFO")
                     Text("INFO")
                 }
+                .scrollIndicators(.visible)
                 .padding()
+            }
+            ScrollView {
+                PrivacyPolicyView()
             }
         }
     }
