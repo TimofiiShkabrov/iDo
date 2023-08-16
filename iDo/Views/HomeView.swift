@@ -132,9 +132,14 @@ struct HomeView: View {
                         
                         Spacer()
                     }
-                    .padding(.vertical)
+                    .padding(.top)
                     .padding(.horizontal, 25)
-                    .background(Image("lcbg").resizable().rotationEffect(Angle(degrees: 90)).aspectRatio(contentMode: .fill))
+                    .background(Image("lcbg")
+                        .resizable()
+                        .rotationEffect(Angle(degrees: 90))
+                        .aspectRatio(contentMode: .fill)
+                    )
+                    .shadow(radius: 20)
                     
                     GeometryReader { _ in
                         VStack {
@@ -145,7 +150,7 @@ struct HomeView: View {
                             } else if self.homeViewModel.indexPage == 2 {
                                 ProfileView()
                             } else {
-                                Text("Information")
+                                InfoView()
                             }
                         }
                     }
@@ -164,18 +169,24 @@ struct HomeView: View {
                                 // activate addTaskView
                                 self.homeViewModel.indexPage = 1
                             } label: {
-                                Image(systemName: "plus.circle.fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 45, height: 45)
-                                    .foregroundColor(Color("lightBlueColor"))
+                                ZStack {
+                                    Circle()
+                                        .frame(width: 50, height: 50)
+                                        .foregroundColor(Color.white)
+                                        .shadow(radius: 20)
+                                    Image(systemName: "plus.circle.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 45, height: 45)
+                                        .foregroundColor(Color("lightBlueColor"))
+                                }
                             }
                         }
-                        .padding()
+                        .padding(30)
                     }
                 }
             }
-            .ignoresSafeArea(edges: .top)
+            .ignoresSafeArea()
         } else {
             LoginView()
         }

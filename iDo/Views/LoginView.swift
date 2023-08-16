@@ -17,6 +17,7 @@ struct LoginView: View {
                 
                 //Header
                 HeaderLoginView()
+                    .shadow(radius: 20)
                 
                 //Login form
                 VStack {
