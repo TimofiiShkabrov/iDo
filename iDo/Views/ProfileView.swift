@@ -13,48 +13,71 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                if let user = profileViewModel.user {
-                    // avatar
-                    Image(systemName: "person.circle")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundColor(Color.blue)
-                        .frame(width: 125, height: 125)
-                    
-                    // info
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("Name: ")
-                            Text(user.name)
+            ZStack {
+                Image("lcbg")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    .cornerRadius(20)
+                    .shadow(radius: 20)
+                    .offset(y: UIScreen.main.bounds.maxY / 2.5)
+                VStack {
+                    if let user = profileViewModel.user {
+                        // avatar
+                        ZStack {
+                            Circle()
+                                .frame(width: 110, height: 110)
+                                .foregroundColor(Color.white)
+                                .shadow(radius: 20)
+                            Image(systemName: "person.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(Color.blue)
+                                .frame(width: 90, height: 90)
                         }
-                        HStack {
-                            Text("Email: ")
-                            Text(user.email)
+                        .padding()
+                        // info
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("Name: ")
+                                    .bold()
+                                Text(user.name)
+                            }
+                            .font(.title2)
+                            HStack {
+                                Text("Email: ")
+                                    .bold()
+                                Text(user.email)
+                            }
+                            .font(.title2)
+                            HStack {
+                                Text("Join date: ")
+                                    .bold()
+                                Text("\(Date(timeIntervalSince1970: user.joinDate).formatted(date: .abbreviated, time: .shortened))")
+                            }
+                            .font(.title2)
                         }
-                        HStack {
-                            Text("Join date: ")
-                            Text("\(Date(timeIntervalSince1970: user.joinDate).formatted(date: .abbreviated, time: .shortened))")
-                        }
-                    }
-                    
-                    //log out
-                    Button(action: {
-                        profileViewModel.logOut()
-                    }) {
-                        Text("Log out")
+                        
+                        //log out
+                        Button(action: {
+                            profileViewModel.logOut()
+                        }) {
+                            HStack {
+                                Text("Log out")
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                            }
                             .foregroundColor(.white)
-                            .frame(width: UIScreen.main.bounds.width / 3)
                             .padding()
+                            .padding(.horizontal)
+                        }
+                        .background(Color.green)
+                        .clipShape(Capsule())
+                        .padding(.top, 45)
+                    } else {
+                        Text("Loading user data...")
                     }
-                    .background(Color.green)
-                    .clipShape(Capsule())
-                    .padding(.top, 45)
-                } else {
-                    Text("Loading user data...")
                 }
             }
-            .navigationTitle("Yor profile")
         }
         .onAppear {
             profileViewModel.fetchUser()
