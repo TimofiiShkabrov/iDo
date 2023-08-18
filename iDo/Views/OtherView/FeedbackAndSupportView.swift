@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FeedbackAndSupportView__: View {
+struct FeedbackAndSupportView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -44,8 +44,8 @@ struct FeedbackAndSupportView__: View {
     }
 }
 
-struct FeedbackAndSupportView___Previews: PreviewProvider {
+struct FeedbackAndSupportView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedbackAndSupportView__()
+        FeedbackAndSupportView()
     }
 }

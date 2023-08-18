@@ -13,40 +13,80 @@ struct InfoView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Select document:")
-                Spacer()
-            }
-            .padding(.horizontal)
-            .padding(.top)
             ScrollView(.horizontal) {
                 HStack {
                     Button {
                         //
-                        
+                        self.infoViewModel.indexInfo = 0
+                        withAnimation {
+                            self.infoViewModel.infoShow.toggle()
+                        }
                     } label: {
-                        Text("Privacy Policy")
+                        Text("FAQ")
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .background(Color("lightBlueColor"))
+                            .cornerRadius(20)
                     }
                     Button {
                         //
-                        
+                        self.infoViewModel.indexInfo = 1
+                        withAnimation {
+                            self.infoViewModel.infoShow.toggle()
+                        }
+                    } label: {
+                        Text("Feedback & Support")
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .background(Color("lightBlueColor"))
+                            .cornerRadius(20)
+                    }
+                    Button {
+                        //
+                        self.infoViewModel.indexInfo = 2
+                        withAnimation {
+                            self.infoViewModel.infoShow.toggle()
+                        }
                     } label: {
                         Text("Terms of Use")
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .background(Color("lightBlueColor"))
+                            .cornerRadius(20)
                     }
-                    Text("INFO")
-                    Text("INFO")
-                    Text("INFO")
-                    Text("INFO")
-                    Text("INFO")
-                    Text("INFO")
+                    Button {
+                        //
+                        self.infoViewModel.indexInfo = 3
+                        withAnimation {
+                            self.infoViewModel.infoShow.toggle()
+                        }
+                    } label: {
+                        Text("Privacy Policy")
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .background(Color("lightBlueColor"))
+                            .cornerRadius(20)
+                    }
+                    
                 }
                 .scrollIndicators(.visible)
                 .padding()
             }
-            ScrollView {
-                PrivacyPolicyView()
+            GeometryReader { _ in
+                VStack {
+                    if self.infoViewModel.indexInfo == 0 {
+                        FAQView()
+                    } else if self.infoViewModel.indexInfo == 1 {
+                        FeedbackAndSupportView()
+                    } else if self.infoViewModel.indexInfo == 2 {
+                        TermsOfUseView()
+                    } else {
+                        PrivacyPolicyView()
+                    }
+                }
             }
         }
+        .background()
     }
 }
 
