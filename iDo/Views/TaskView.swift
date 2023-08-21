@@ -13,32 +13,17 @@ struct TaskView: View {
     let task: TasksModel
     
     var body: some View {
-        if task.done {
-            SingleTaskView(task: task)
-                .opacity(0.5)
-        } else {
-            SingleTaskView(task: task)
-        }
-    }
-}
-
-struct TaskView_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskView(task: .init(id: "123", title: "title", description: "description", dueDate: Date().timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, done: true))
-    }
-}
-
-struct SingleTaskView: View {
-    
-    @StateObject var taskViewModel = TaskViewModel()
-    let task: TasksModel
-    
-    var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(task.title)
-                    .font(.body)
+                HStack {
+                    if task.done {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(Color.green)
+                    }
+                    Text(task.title)
+                        .font(.title2)
                     .padding(.bottom, 5)
+                }
                 Text("\(Date(timeIntervalSince1970: task.dueDate).formatted(date: .abbreviated, time: .shortened))")
                     .font(.subheadline)
                     .opacity(0.5)
@@ -46,12 +31,12 @@ struct SingleTaskView: View {
             
             Spacer()
             
-            Button(action: {
-                taskViewModel.taskDone(task: task)
-            }) {
-                Image(systemName: task.done ? "checkmark.circle.fill" : "circle")
-                    .foregroundColor(task.done ? Color.green : Color.red)
-            }
         }
+    }
+}
+
+struct TaskView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskView(task: .init(id: "123", title: "title", description: "description", dueDate: Date().timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, dateNotification: Date().timeIntervalSince1970, done: true))
     }
 }

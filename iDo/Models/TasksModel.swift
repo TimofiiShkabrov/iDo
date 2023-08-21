@@ -13,6 +13,7 @@ struct TasksModel: Codable, Identifiable {
     let description: String
     let dueDate: TimeInterval
     let createdDate: TimeInterval
+    let dateNotification: TimeInterval
     var done: Bool
     
     mutating func setDone(_ state: Bool) {

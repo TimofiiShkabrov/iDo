@@ -10,6 +10,7 @@ import FirebaseFirestoreSwift
 
 struct TasksListView: View {
     
+    @StateObject var taskViewModel = TaskViewModel()
     @StateObject var homeViewModel = HomeViewModel()
     @StateObject var addTaskViewModel = AddTaskViewModel()
     @StateObject var tasksListViewModel: TasksListViewModel
@@ -46,16 +47,28 @@ struct TasksListView: View {
             }
             .padding(.horizontal)
             
-            List(tasks.sorted(by: tasksListViewModel.shortByDateAdded ? { $0.createdDate > $1.createdDate } : { $0.createdDate < $1.createdDate })) { item in
-                TaskView(task: item)
-                    .swipeActions {
-                        Button(action: {
-                            tasksListViewModel.delete(id: item.id)
-                        }) {
-                            Text("Delete")
-                        }
-                        .tint(.red)
+            NavigationView {
+                List(tasks.sorted(by: tasksListViewModel.shortByDateAdded ? { $0.createdDate > $1.createdDate } : { $0.createdDate < $1.createdDate })) { item in
+                    NavigationLink(destination: TaskDetailView(task: item)) {
+                        TaskView(task: item)
+                            .swipeActions {
+                                Button(action: {
+                                    tasksListViewModel.delete(id: item.id)
+                                }) {
+                                    Text("Delete")
+                                }
+                                .tint(.red)
+                            }
+                            .swipeActions(edge: .leading) {
+                                Button(action: {
+                                    taskViewModel.taskDone(task: item)
+                                }) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                }
+                                .tint(.green)
+                            }
                     }
+                }
             }
         }
     }

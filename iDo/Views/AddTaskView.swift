@@ -81,11 +81,6 @@ struct AddTaskView: View {
 
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
-//        AddTaskView(showAddTaskView: Binding(get: {
-//            return true
-//        }, set: { _ in
-//
-//        }))
         AddTaskView()
     }
 }
