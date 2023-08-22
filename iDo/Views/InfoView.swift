@@ -72,17 +72,15 @@ struct InfoView: View {
                 .scrollIndicators(.visible)
                 .padding()
             }
-            GeometryReader { _ in
-                VStack {
-                    if self.infoViewModel.indexInfo == 0 {
-                        FAQView()
-                    } else if self.infoViewModel.indexInfo == 1 {
-                        FeedbackAndSupportView()
-                    } else if self.infoViewModel.indexInfo == 2 {
-                        TermsOfUseView()
-                    } else {
-                        PrivacyPolicyView()
-                    }
+            VStack {
+                if self.infoViewModel.indexInfo == 0 {
+                    FAQView()
+                } else if self.infoViewModel.indexInfo == 1 {
+                    FeedbackAndSupportView()
+                } else if self.infoViewModel.indexInfo == 2 {
+                    TermsOfUseView()
+                } else {
+                    PrivacyPolicyView()
                 }
             }
         }

@@ -146,11 +146,13 @@ struct HomeView: View {
                             if self.homeViewModel.indexPage == 0 {
                                 TasksListView(userId: homeViewModel.currenUserId)
                             } else if self.homeViewModel.indexPage == 1 {
-                                AddTaskView()
+                                AddTaskView(homeViewModel: homeViewModel)
                             } else if self.homeViewModel.indexPage == 2 {
                                 ProfileView()
-                            } else {
+                            } else if self.homeViewModel.indexPage == 3 {
                                 InfoView()
+                            } else {
+                                SaveTaskView(homeViewModel: homeViewModel)
                             }
                         }
                     }

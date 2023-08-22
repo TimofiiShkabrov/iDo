@@ -35,6 +35,7 @@
 		2274B8392A7FA4020048C067 /* TaskInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2274B8382A7FA4020048C067 /* TaskInformationViewModel.swift */; };
 		22883D382A7C0C7A00A39701 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22883D372A7C0C7A00A39701 /* NotificationsManager.swift */; };
 		22A5E4322A8F8B2100D300F1 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5E4312A8F8B2100D300F1 /* TaskDetailView.swift */; };
+		22DA899C2A93D76C00761640 /* SaveTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA899B2A93D76C00761640 /* SaveTaskView.swift */; };
 		22E965F52A8CEE840027E500 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E965F42A8CEE840027E500 /* InfoView.swift */; };
 		22E965F72A8CF03D0027E500 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E965F62A8CF03D0027E500 /* InfoViewModel.swift */; };
 		22E965F92A8CF3B50027E500 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E965F82A8CF3B50027E500 /* PrivacyPolicyView.swift */; };
@@ -72,6 +73,7 @@
 		2274B8382A7FA4020048C067 /* TaskInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInformationViewModel.swift; sourceTree = "<group>"; };
 		22883D372A7C0C7A00A39701 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		22A5E4312A8F8B2100D300F1 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
+		22DA899B2A93D76C00761640 /* SaveTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTaskView.swift; sourceTree = "<group>"; };
 		22E965F42A8CEE840027E500 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		22E965F62A8CF03D0027E500 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		22E965F82A8CF3B50027E500 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				221927F62A73E8E40060C802 /* OtherView */,
 				224D17172A716DCF000545A2 /* HomeView.swift */,
+				22DA899B2A93D76C00761640 /* SaveTaskView.swift */,
 				224D17302A716FB2000545A2 /* LoginView.swift */,
 				224D17352A717177000545A2 /* RegisterView.swift */,
 				224D17332A717164000545A2 /* AddTaskView.swift */,
@@ -287,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22DA899C2A93D76C00761640 /* SaveTaskView.swift in Sources */,
 				22E965F72A8CF03D0027E500 /* InfoViewModel.swift in Sources */,
 				2274B8392A7FA4020048C067 /* TaskInformationViewModel.swift in Sources */,
 				224D17312A716FB2000545A2 /* LoginView.swift in Sources */,

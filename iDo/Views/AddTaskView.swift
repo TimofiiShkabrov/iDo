@@ -11,7 +11,8 @@ struct AddTaskView: View {
     
     @StateObject var addTaskViewModel = AddTaskViewModel()
     @StateObject var notificationManager = NotificationManager()
-        
+    @ObservedObject var homeViewModel: HomeViewModel
+    
     var body: some View {
         VStack {
             Form {
@@ -43,15 +44,15 @@ struct AddTaskView: View {
                 
                 if notificationManager.showNotificationDatePicker {
                     DatePicker("Notification date", selection: $notificationManager.dateNotification)
-                            .datePickerStyle(GraphicalDatePickerStyle())
-                    }
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                }
                 
                 // Button
                 Button(action: {
                     if addTaskViewModel.saveCheck {
                         addTaskViewModel.save()
                         notificationManager.title = addTaskViewModel.title
-                        addTaskViewModel.showAddTaskView = false
+                        self.homeViewModel.indexPage = 4
                     } else {
                         addTaskViewModel.showAlert = true
                     }
@@ -81,6 +82,6 @@ struct AddTaskView: View {
 
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskView()
+        AddTaskView(homeViewModel: HomeViewModel())
     }
 }
