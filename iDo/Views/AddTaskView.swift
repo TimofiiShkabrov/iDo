@@ -17,13 +17,15 @@ struct AddTaskView: View {
         VStack {
             Form {
                 //Title
-                TextField("Enter the task name", text: $addTaskViewModel.title)
+                TextField("Enter the task name", text: $addTaskViewModel.title, axis: .vertical)
+                    .lineLimit(nil)
                     .textFieldStyle(DefaultTextFieldStyle())
                     .font(.system(size: 25))
                     .padding(10)
                 
                 //Description
-                TextField("Enter a description for the task", text: $addTaskViewModel.description)
+                TextField("Enter a description for the task", text: $addTaskViewModel.description, axis: .vertical)
+                    .lineLimit(nil)
                     .textFieldStyle(DefaultTextFieldStyle())
                     .font(.system(size: 18))
                     .padding(10)

@@ -30,34 +30,50 @@ struct TaskDetailView: View {
                         .foregroundColor(Color(task.done ? .green : .red))
                 }
             }
-            .padding(.vertical)
+            .padding()
             
             Divider()
             
             ScrollView {
                 VStack(alignment: .leading) {
                     HStack {
+                        Image(systemName: "calendar.badge.exclamationmark")
                         Text("Deadline:")
                         Text("\(Date(timeIntervalSince1970: task.dueDate).formatted(date: .abbreviated, time: .shortened))")
                     }
-                    Text("Task description:")
-                        .padding(.top)
+                    .padding()
+                    
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Image(systemName: "text.bubble")
+                            Text("Task description:")
+                        }
                         .padding(.bottom, 5)
-                    Text(task.description)
-                        .font(.body)
+                        
+                        Text(task.description)
+                            .font(.body)
+                    }
+                    .padding()
+                    .background(Color.cyan.opacity(0.3))
+                    .cornerRadius(20)
+                                            
+                    HStack {
+                        Image(systemName: "bell")
+                        Text("Notification date:")
+                        Text("\(Date(timeIntervalSince1970: task.dateNotification).formatted(date: .abbreviated, time: .shortened))")
+                    }
+                    .padding()
+                    
+                    HStack {
+                        Image(systemName: "calendar.badge.plus")
+                        Text("Date of creation:")
+                        Text("\(Date(timeIntervalSince1970: task.createdDate).formatted(date: .abbreviated, time: .shortened))")
+                    }
+                    .padding(.horizontal)
                 }
             }
-            HStack {
-                Text("Notification date:")
-                Text("\(Date(timeIntervalSince1970: task.dateNotification).formatted(date: .abbreviated, time: .shortened))")
-            }
-            .padding(.vertical)
-            HStack {
-                Text("Date of creation:")
-                Text("\(Date(timeIntervalSince1970: task.createdDate).formatted(date: .abbreviated, time: .shortened))")
-            }
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 

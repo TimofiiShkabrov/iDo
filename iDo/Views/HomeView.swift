@@ -136,6 +136,7 @@ struct HomeView: View {
                     .padding(.horizontal, 25)
                     .background(Image("lcbg")
                         .resizable()
+                        .opacity(0.5)
                         .rotationEffect(Angle(degrees: 90))
                         .aspectRatio(contentMode: .fill)
                     )
@@ -157,6 +158,7 @@ struct HomeView: View {
                         }
                     }
                 }
+                .background()
                 .padding(.top, 50)
                 .cornerRadius(self.homeViewModel.showMenu ? 20 : 0)
                 .scaleEffect(self.homeViewModel.showMenu ? 0.8 : 1)

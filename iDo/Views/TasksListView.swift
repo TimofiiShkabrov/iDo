@@ -55,7 +55,7 @@ struct TasksListView: View {
                                 Button(action: {
                                     tasksListViewModel.delete(id: item.id)
                                 }) {
-                                    Text("Delete")
+                                    Image(systemName: "trash.circle.fill")
                                 }
                                 .tint(.red)
                             }
@@ -70,6 +70,7 @@ struct TasksListView: View {
                     }
                 }
             }
+            .padding(.top, 10)
         }
     }
 }
