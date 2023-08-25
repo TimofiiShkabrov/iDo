@@ -49,7 +49,7 @@ struct TasksListView: View {
             
             NavigationView {
                 List(tasks.sorted(by: tasksListViewModel.shortByDateAdded ? { $0.createdDate > $1.createdDate } : { $0.createdDate < $1.createdDate })) { item in
-                    NavigationLink(destination: TaskDetailView(task: item)) {
+                    NavigationLink(destination: TaskDetailView(notificationManager: NotificationManager(), task: item)) {
                         TaskView(task: item)
                             .swipeActions {
                                 Button(action: {

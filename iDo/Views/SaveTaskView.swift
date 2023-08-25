@@ -13,6 +13,9 @@ struct SaveTaskView: View {
     
     var body: some View {
         VStack {
+            
+            Spacer()
+            
             Image("sucsessfull")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -52,8 +55,8 @@ struct SaveTaskView: View {
                 .background(Color("lightBlueColor"))
                 .clipShape(Capsule())
             }
+            Spacer()
         }
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         .background()
     }
 }

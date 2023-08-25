@@ -10,6 +10,7 @@ import SwiftUI
 struct TaskDetailView: View {
     
     @StateObject var taskViewModel = TaskViewModel()
+    @ObservedObject var notificationManager: NotificationManager
     var task: TasksModel
     
     var body: some View {
@@ -56,13 +57,31 @@ struct TaskDetailView: View {
                     .padding()
                     .background(Color.cyan.opacity(0.3))
                     .cornerRadius(20)
-                                            
+                    .padding(.bottom, 5)
+
                     HStack {
                         Image(systemName: "bell")
                         Text("Notification date:")
                         Text("\(Date(timeIntervalSince1970: task.dateNotification).formatted(date: .abbreviated, time: .shortened))")
                     }
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.bottom, 5)
+
+                    VStack {
+                        Toggle(isOn:
+                                $notificationManager.showNotificationDatePicker
+                            .animation(.spring())
+                        ) {
+                            Text("Remind yourself of the task")
+                                .bold()
+                        }
+                        if notificationManager.showNotificationDatePicker {
+                            DatePicker("Notification date", selection: $notificationManager.dateNotification)
+                                .datePickerStyle(GraphicalDatePickerStyle())
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom, 5)
                     
                     HStack {
                         Image(systemName: "calendar.badge.plus")
@@ -79,6 +98,6 @@ struct TaskDetailView: View {
 
 struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskDetailView(task: TasksModel(id: "123", title: "Sample Task", description: "Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description", dueDate: Date().timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, dateNotification: Date().timeIntervalSince1970, done: false))
+        TaskDetailView(notificationManager: NotificationManager(), task: TasksModel(id: "123", title: "Sample Task", description: "Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description ", dueDate: Date().timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, dateNotification: Date().timeIntervalSince1970, done: false))
     }
 }

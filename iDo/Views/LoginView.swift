@@ -14,11 +14,9 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                
                 //Header
                 HeaderLoginView()
                     .shadow(radius: 20)
-                
                 //Login form
                 VStack {
                     VStack(alignment: .leading) {
@@ -26,6 +24,7 @@ struct LoginView: View {
                             if !loginViewModel.errorMassage.isEmpty {
                                 Text(loginViewModel.errorMassage)
                                     .foregroundColor(Color.red)
+                                    .fixedSize(horizontal: false, vertical: true)
                                     .padding(.bottom)
                             }
                             Text("Email")
