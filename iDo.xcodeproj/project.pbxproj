@@ -35,6 +35,8 @@
 		2274B8392A7FA4020048C067 /* TaskInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2274B8382A7FA4020048C067 /* TaskInformationViewModel.swift */; };
 		22883D382A7C0C7A00A39701 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22883D372A7C0C7A00A39701 /* NotificationsManager.swift */; };
 		22A5E4322A8F8B2100D300F1 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5E4312A8F8B2100D300F1 /* TaskDetailView.swift */; };
+		22BD5F5C2A98C3D200855046 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BD5F5B2A98C3D200855046 /* PasswordResetView.swift */; };
+		22BD5F5E2A98C3FA00855046 /* PasswordResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BD5F5D2A98C3FA00855046 /* PasswordResetViewModel.swift */; };
 		22DA899C2A93D76C00761640 /* SaveTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA899B2A93D76C00761640 /* SaveTaskView.swift */; };
 		22E965F52A8CEE840027E500 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E965F42A8CEE840027E500 /* InfoView.swift */; };
 		22E965F72A8CF03D0027E500 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E965F62A8CF03D0027E500 /* InfoViewModel.swift */; };
@@ -73,6 +75,8 @@
 		2274B8382A7FA4020048C067 /* TaskInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInformationViewModel.swift; sourceTree = "<group>"; };
 		22883D372A7C0C7A00A39701 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		22A5E4312A8F8B2100D300F1 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
+		22BD5F5B2A98C3D200855046 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
+		22BD5F5D2A98C3FA00855046 /* PasswordResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewModel.swift; sourceTree = "<group>"; };
 		22DA899B2A93D76C00761640 /* SaveTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTaskView.swift; sourceTree = "<group>"; };
 		22E965F42A8CEE840027E500 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		22E965F62A8CF03D0027E500 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
@@ -154,10 +158,11 @@
 			children = (
 				221927F62A73E8E40060C802 /* OtherView */,
 				224D17172A716DCF000545A2 /* HomeView.swift */,
-				22DA899B2A93D76C00761640 /* SaveTaskView.swift */,
+				22BD5F5B2A98C3D200855046 /* PasswordResetView.swift */,
 				224D17302A716FB2000545A2 /* LoginView.swift */,
 				224D17352A717177000545A2 /* RegisterView.swift */,
 				224D17332A717164000545A2 /* AddTaskView.swift */,
+				22DA899B2A93D76C00761640 /* SaveTaskView.swift */,
 				224D17372A7171C4000545A2 /* ProfileView.swift */,
 				224D17392A717346000545A2 /* TasksListView.swift */,
 				224D173B2A717354000545A2 /* TaskView.swift */,
@@ -207,6 +212,7 @@
 				2274B8382A7FA4020048C067 /* TaskInformationViewModel.swift */,
 				22EC56162A8160AD0004201D /* HeaderTasksListViewModel.swift */,
 				22E965F62A8CF03D0027E500 /* InfoViewModel.swift */,
+				22BD5F5D2A98C3FA00855046 /* PasswordResetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -293,6 +299,7 @@
 				22DA899C2A93D76C00761640 /* SaveTaskView.swift in Sources */,
 				22E965F72A8CF03D0027E500 /* InfoViewModel.swift in Sources */,
 				2274B8392A7FA4020048C067 /* TaskInformationViewModel.swift in Sources */,
+				22BD5F5C2A98C3D200855046 /* PasswordResetView.swift in Sources */,
 				224D17312A716FB2000545A2 /* LoginView.swift in Sources */,
 				22A5E4322A8F8B2100D300F1 /* TaskDetailView.swift in Sources */,
 				22E965F92A8CF3B50027E500 /* PrivacyPolicyView.swift in Sources */,
@@ -300,6 +307,7 @@
 				224D175A2A717464000545A2 /* TasksModel.swift in Sources */,
 				22EC56172A8160AD0004201D /* HeaderTasksListViewModel.swift in Sources */,
 				224D17502A7173FB000545A2 /* AddTaskViewModel.swift in Sources */,
+				22BD5F5E2A98C3FA00855046 /* PasswordResetViewModel.swift in Sources */,
 				22E965FD2A8D02020027E500 /* FeedbackAndSupportView.swift in Sources */,
 				224D174A2A7173E3000545A2 /* HomeViewModel.swift in Sources */,
 				224D17362A717177000545A2 /* RegisterView.swift in Sources */,
@@ -452,10 +460,14 @@
 				DEVELOPMENT_TEAM = QJJFV9YPU3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = iDo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -464,9 +476,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tim.iDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -481,10 +496,14 @@
 				DEVELOPMENT_TEAM = QJJFV9YPU3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = iDo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -493,9 +512,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tim.iDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

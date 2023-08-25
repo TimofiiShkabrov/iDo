@@ -24,7 +24,7 @@ class AddTaskViewModel: ObservableObject {
             return
         }
         // get current user id
-        guard let uId = Auth.auth().currentUser?.uid else {
+        guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
         
@@ -35,10 +35,17 @@ class AddTaskViewModel: ObservableObject {
         // save model data
         let dataBase = Firestore.firestore()
         dataBase.collection("users")
-            .document(uId)
+            .document(userId)
             .collection("tasks")
             .document(newId)
-            .setData(newTask.asDictionary())
+//            .setData(newTask.asDictionary())
+            .setData(newTask.asDictionary()) { error in
+                if let error = error {
+                    print("Firestore write error: \(error.localizedDescription)")
+                } else {
+                    print("Data successfully written to Firestore.")
+                }
+            }
     }
     
     var saveCheck: Bool {

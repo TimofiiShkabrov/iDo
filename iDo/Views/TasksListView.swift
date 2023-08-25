@@ -77,6 +77,6 @@ struct TasksListView: View {
 
 struct TasksListView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksListView(userId: "TwVUkReS29YXmpr3gHsUcZvcQ002")
+        TasksListView(userId: "123")
     }
 }

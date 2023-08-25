@@ -17,11 +17,36 @@ class RegisterViewModel: ObservableObject {
     
     init() {}
     
-    func register() {
+    //    func register() {
+    //        guard validate() else {
+    //            return
+    //        }
+    //        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+    //            guard let userId = result?.user.uid else {
+    //                if let error = error {
+    //                    self?.showError(error.localizedDescription)
+    //                }
+    //                return
+    //            }
+    //            self?.insertUserRecord(id: userId)
+    //        }
+    //    }
+    
+    func createUser() {
         guard validate() else {
             return
         }
+        //        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+        //            guard let userId = result?.user.uid else {
+        //                return
+        //            }
+        //            self?.insertUserRecord(id: userId)
+        //        }
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+            if let error = error {
+                print("Error creating user: \(error)")
+                return
+            }
             guard let userId = result?.user.uid else {
                 return
             }
@@ -33,9 +58,16 @@ class RegisterViewModel: ObservableObject {
         let newUser = User(id: id, name: name, email: email, joinDate: Date().timeIntervalSince1970)
         let dataBase = Firestore.firestore()
         
+        //        dataBase.collection("users")
+        //            .document(id)
+        //            .setData(newUser.asDictionary())
         dataBase.collection("users")
             .document(id)
-            .setData(newUser.asDictionary())
+            .setData(newUser.asDictionary()) { error in
+                if let error = error {
+                    print("Error saving user to Firestore: \(error)")
+                }
+            }
     }
     
     private func validate() -> Bool {

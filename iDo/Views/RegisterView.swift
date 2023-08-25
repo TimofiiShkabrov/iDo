@@ -76,7 +76,7 @@ struct RegisterView: View {
                 
                 VStack {
                     Button(action: {
-                        registerViewModel.register()
+                        registerViewModel.createUser()
                         showRegisterView = false
                     }) {
                         Text("Sing Up")
