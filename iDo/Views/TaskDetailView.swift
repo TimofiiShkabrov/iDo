@@ -58,7 +58,7 @@ struct TaskDetailView: View {
                     .background(Color.cyan.opacity(0.3))
                     .cornerRadius(20)
                     .padding(.bottom, 5)
-
+                    
                     HStack {
                         Image(systemName: "bell")
                         Text("Notification date:")
@@ -66,7 +66,7 @@ struct TaskDetailView: View {
                     }
                     .padding(.horizontal)
                     .padding(.bottom, 5)
-
+                    
                     VStack {
                         Toggle(isOn:
                                 $notificationManager.showNotificationDatePicker
@@ -76,8 +76,23 @@ struct TaskDetailView: View {
                                 .bold()
                         }
                         if notificationManager.showNotificationDatePicker {
-                            DatePicker("Notification date", selection: $notificationManager.dateNotification)
-                                .datePickerStyle(GraphicalDatePickerStyle())
+                            VStack {
+                                DatePicker("Notification date", selection: $notificationManager.dateNotification)
+                                
+                                Button(action: {
+                                    //
+                                    handleNotifications()
+                                }) {
+                                    Text("Remind me")
+                                        .foregroundColor(.white)
+                                        .frame(width: UIScreen.main.bounds.width / 1.3)
+                                        .padding()
+                                }
+                                .background(Color("lightBlueColor"))
+                                .clipShape(Capsule())
+                                .padding(.vertical)
+                                
+                            }
                         }
                     }
                     .padding(.horizontal)
@@ -93,6 +108,13 @@ struct TaskDetailView: View {
             }
         }
         .padding(.horizontal)
+    }
+    
+    func handleNotifications() {
+        if notificationManager.showNotificationDatePicker {
+            notificationManager.requestPermission()
+            notificationManager.scheduleNotification()
+        }
     }
 }
 
