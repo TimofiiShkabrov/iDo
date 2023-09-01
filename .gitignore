@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/swift,swiftpackagemanager,firebase
 # Edit at https://www.toptal.com/developers/gitignore?templates=swift,swiftpackagemanager,firebase
 
+### Google Service ###
+iDo/Service/GoogleService-Info.plist
+
 ### Firebase ###
 .idea
 **/node_modules/*

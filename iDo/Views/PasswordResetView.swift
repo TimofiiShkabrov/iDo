@@ -38,6 +38,9 @@ struct PasswordResetView: View {
                 .autocorrectionDisabled()
                 .padding()
             
+            Divider()
+                .padding(.horizontal)
+            
             Button(action: {
                 PasswordResetViewModel().resetPassword(email: email) { success, error in
                     if success {

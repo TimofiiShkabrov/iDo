@@ -50,8 +50,8 @@ struct AddTaskView: View {
                 }
                 
                 if notificationManager.showNotificationDatePicker {
-                    DatePicker("Notification date", selection: $notificationManager.dateNotification)
-                        .datePickerStyle(GraphicalDatePickerStyle())
+                    DatePicker("Notification date:", selection: $notificationManager.dateNotification)
+                        .padding(.leading, 10)
                 }
                 
                 // Button
@@ -86,7 +86,7 @@ struct AddTaskView: View {
     func handleNotifications() {
         if notificationManager.showNotificationDatePicker {
             notificationManager.requestPermission()
-            if notificationManager.dateNotification != addTaskViewModel.dueDate {
+            if notificationManager.dateNotification >= addTaskViewModel.dueDate {
                 notificationManager.scheduleNotification()
             } else {
                 addTaskViewModel.showAlert = true

@@ -11,6 +11,7 @@ struct TaskDetailView: View {
     
     @StateObject var taskViewModel = TaskViewModel()
     @ObservedObject var notificationManager: NotificationManager
+    @State var editTask = false
     var task: TasksModel
     
     var body: some View {
@@ -59,13 +60,23 @@ struct TaskDetailView: View {
                     .cornerRadius(20)
                     .padding(.bottom, 5)
                     
-                    HStack {
-                        Image(systemName: "bell")
-                        Text("Notification date:")
-                        Text("\(Date(timeIntervalSince1970: task.dateNotification).formatted(date: .abbreviated, time: .shortened))")
+                    if task.dateNotification != task.createdDate {
+                        HStack {
+                            Image(systemName: "bell")
+                            Text("Notification date:")
+                            Text("\(Date(timeIntervalSince1970: task.dateNotification).formatted(date: .abbreviated, time: .shortened))")
+                        }
+                        .padding(.horizontal)
+                        .padding(.bottom, 5)
+                        
+                    } else {
+                        HStack {
+                            Image(systemName: "bell")
+                            Text("Notification date not selected")
+                        }
+                        .padding(.horizontal)
+                        .padding(.bottom, 5)
                     }
-                    .padding(.horizontal)
-                    .padding(.bottom, 5)
                     
                     VStack {
                         Toggle(isOn:
@@ -104,6 +115,25 @@ struct TaskDetailView: View {
                         Text("\(Date(timeIntervalSince1970: task.createdDate).formatted(date: .abbreviated, time: .shortened))")
                     }
                     .padding(.horizontal)
+                }
+            }
+            HStack {
+                Spacer()
+                ZStack {
+                    Circle()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(Color.white)
+                        .shadow(radius: 20)
+                    Button(action: {
+                        editTask.toggle()
+                    }) {
+                        Image(systemName: self.editTask ? "checkmark.circle.fill" : "square.and.pencil.circle.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 45, height: 45)
+                            .foregroundColor(Color("lightBlueColor"))
+                    }
+                    .padding()
                 }
             }
         }
