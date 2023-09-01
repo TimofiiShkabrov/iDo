@@ -13,16 +13,7 @@ struct SaveTaskView: View {
     
     var body: some View {
         VStack {
-            
             Spacer()
-            
-            Image("sucsessfull")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 200, height: 200)
-                .padding(.bottom, -30)
-            Text("Task saved successfully!")
-                .font(.title3)
             HStack {
                 Spacer()
                 VStack {

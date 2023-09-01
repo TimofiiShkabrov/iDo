@@ -50,6 +50,19 @@ struct LoginView: View {
                             SecureField("Enter Your Password", text: $loginViewModel.password)
                             
                             Divider()
+                            
+                            HStack {
+                                Spacer()
+                                
+                                Button(action: {
+                                    withAnimation {
+                                        passwordResetViewModel.showPasswordResetView = true
+                                    }
+                                }) {
+                                    Text("Forgot your password?")
+                                        .font(.subheadline)
+                                }
+                            }
                         }
                     }
                     .padding(.horizontal, 30)
@@ -65,11 +78,11 @@ struct LoginView: View {
                                 .background(Color("lightBlueColor"))
                                 .clipShape(Capsule())
                         }
-                        .padding(.top, 45)
+                        .padding(.top, 25)
                         
                         Text("or")
                             .foregroundColor(Color.gray.opacity(0.5))
-                            .padding(.top)
+                            .padding(.top, 10)
                         
                         HStack {
                             Text("Don't have an account?")
@@ -83,15 +96,7 @@ struct LoginView: View {
                             }
                             .foregroundColor(Color.blue)
                         }
-                        .padding(.top)
-                        Button(action: {
-                            withAnimation {
-                                passwordResetViewModel.showPasswordResetView = true
-                            }
-                        }) {
-                            Text("reset pass")
-                        }
-                        .foregroundColor(Color.blue)
+                        .padding(.top, 5)
                     }
                 }
                 .padding(.vertical, 30)

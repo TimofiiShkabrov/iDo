@@ -24,11 +24,21 @@ struct PasswordResetView: View {
                 
             }
             .padding()
+            
+            HStack {
+                Text("Enter your Email")
+                    .font(.headline)
+                    .fontWeight(.light)
+                .opacity(0.75)
+                Spacer()
+            }
+            .padding(.horizontal)
             TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .autocapitalization(.none)
+                .autocorrectionDisabled()
                 .padding()
             
-            Button("Сбросить пароль") {
+            Button(action: {
                 PasswordResetViewModel().resetPassword(email: email) { success, error in
                     if success {
                         resetSuccess = true
@@ -37,6 +47,13 @@ struct PasswordResetView: View {
                         resetError = error
                     }
                 }
+            }) {
+                Text("Reset password")
+                    .foregroundColor(.white)
+                    .frame(width: UIScreen.main.bounds.width / 3)
+                    .padding()
+                    .background(Color("lightBlueColor"))
+                    .clipShape(Capsule())
             }
             .padding()
             
