@@ -35,8 +35,39 @@ struct TaskDetailView: View {
                             .frame(width: 40, height: 40)
                             .foregroundColor(Color(task.done ? .green : .red))
                     }
+                    .padding(.trailing, 10)
+                    
+                    ZStack {
+                        Circle()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(Color.white)
+                            .shadow(radius: 10)
+                        if taskDetailViewModel.editTask != true {
+                            Button(action: {
+                                taskDetailViewModel.editTask = true
+                            }) {
+                                Image(systemName: "square.and.pencil.circle.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 45, height: 45)
+                                    .foregroundColor(Color("lightBlueColor"))
+                            }
+                        } else {
+                            Button(action: {
+                                taskDetailViewModel.updateTitle(task: task)
+                                taskDetailViewModel.updateDescription(task: task)
+                                taskDetailViewModel.editTask = false
+                            }) {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 45, height: 45)
+                                    .foregroundColor(Color("lightBlueColor"))
+                            }
+                        }
+                    }
                 }
-                .padding()
+                .padding(.horizontal)
                 
                 Divider()
                 
@@ -69,7 +100,7 @@ struct TaskDetailView: View {
                         .background(Color.cyan.opacity(0.2))
                         .cornerRadius(20)
                         .padding(.bottom, 5)
-
+                        
                         
                         if task.dateNotification != task.createdDate {
                             HStack {
@@ -130,46 +161,6 @@ struct TaskDetailView: View {
                 }
             }
             .padding(.horizontal)
-            
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    ZStack {
-                        Circle()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(Color.white)
-                            .shadow(radius: 10)
-                        if taskDetailViewModel.editTask != true {
-                            Button(action: {
-                                taskDetailViewModel.editTask = true
-                            }) {
-                                Image(systemName: "square.and.pencil.circle.fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 45, height: 45)
-                                    .foregroundColor(Color("lightBlueColor"))
-                            }
-                            .padding()
-                        } else {
-                            Button(action: {
-                                taskDetailViewModel.updateTitle(task: task)
-                                taskDetailViewModel.updateDescription(task: task)
-                                taskDetailViewModel.editTask = false
-                            }) {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 45, height: 45)
-                                    .foregroundColor(Color("lightBlueColor"))
-                            }
-                            .padding()
-                        }
-                    }
-                }
-            }
-            .padding()
-            .padding(.trailing, 70)
         }
     }
     
