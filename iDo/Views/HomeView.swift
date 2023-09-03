@@ -176,7 +176,7 @@ struct HomeView: View {
                                     Circle()
                                         .frame(width: 50, height: 50)
                                         .foregroundColor(Color.white)
-                                        .shadow(radius: 20)
+                                        .shadow(radius: 10)
                                     Image(systemName: "plus.circle.fill")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)

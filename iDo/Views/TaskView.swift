@@ -35,7 +35,7 @@ struct TaskView: View {
             Spacer()
             
         }
-        .padding(.bottom, 8)
+        .padding(.bottom, 4)
     }
 }
 

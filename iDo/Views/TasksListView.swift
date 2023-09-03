@@ -76,9 +76,8 @@ struct TasksListView: View {
                     .listRowBackground(
                         Rectangle()
                             .fill(Color.gray.opacity(0.2))
-                            .frame(width: .infinity)
-                            .cornerRadius(20)
-                            .padding(.bottom, 8)
+                            .cornerRadius(10)
+                            .padding(.bottom, 4)
                     )
                 }
                 .scrollContentBackground(.hidden)
