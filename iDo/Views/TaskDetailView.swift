@@ -63,10 +63,10 @@ struct TaskDetailView: View {
                         }
                     }
                     .padding()
-                    .background(Color.cyan.opacity(0.3))
+                    .frame(width: .infinity)
+                    .background(Color.cyan.opacity(0.2))
                     .cornerRadius(20)
                     .padding(.bottom, 5)
-                    .frame(width: .infinity)
 
                     
                     if task.dateNotification != task.createdDate {
@@ -124,42 +124,41 @@ struct TaskDetailView: View {
                         Text("\(Date(timeIntervalSince1970: task.createdDate).formatted(date: .abbreviated, time: .shortened))")
                     }
                     .padding(.horizontal)
-                }
-            }
-            HStack {
-                Spacer()
-                ZStack {
-                    Circle()
-                        .frame(width: 50, height: 50)
-                        .foregroundColor(Color.white)
-                        .shadow(radius: 20)
-                    if taskDetailViewModel.editTask != true {
-                        Button(action: {
-                            taskDetailViewModel.editTask = true
-                        }) {
-                            Image(systemName: "square.and.pencil.circle.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 45, height: 45)
-                                .foregroundColor(Color("lightBlueColor"))
+                    HStack {
+                        Spacer()
+                        ZStack {
+                            Circle()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(Color.white)
+                                .shadow(radius: 20)
+                            if taskDetailViewModel.editTask != true {
+                                Button(action: {
+                                    taskDetailViewModel.editTask = true
+                                }) {
+                                    Image(systemName: "square.and.pencil.circle.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 45, height: 45)
+                                        .foregroundColor(Color("lightBlueColor"))
+                                }
+                                .padding()
+                            } else {
+                                Button(action: {
+                                    taskDetailViewModel.updateTitle(task: task)
+                                    taskDetailViewModel.updateDescription(task: task)
+                                    taskDetailViewModel.editTask = false
+                                }) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 45, height: 45)
+                                        .foregroundColor(Color("lightBlueColor"))
+                                }
+                                .padding()
+                            }
                         }
-                        .padding()
-                    } else {
-                        Button(action: {
-                            taskDetailViewModel.updateTitle(task: task)
-                            taskDetailViewModel.updateDescription(task: task)
-                            taskDetailViewModel.editTask = false
-                        }) {
-                            Image(systemName: "checkmark.circle.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 45, height: 45)
-                                .foregroundColor(Color("lightBlueColor"))
-                        }
-                        .padding()
                     }
                 }
-                .padding(.bottom, 50)
             }
         }
         .padding(.horizontal)
@@ -175,6 +174,6 @@ struct TaskDetailView: View {
 
 struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskDetailView(notificationManager: NotificationManager(), task: TasksModel(id: "123", title: "Sample Task", description: "Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description Sample Description ", dueDate: Date().timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, dateNotification: Date().timeIntervalSince1970, done: false))
+        TaskDetailView(notificationManager: NotificationManager(), task: TasksModel(id: "123", title: "Sample Task", description: "Sample Description", dueDate: Date().timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, dateNotification: Date().timeIntervalSince1970, done: false))
     }
 }

@@ -27,7 +27,6 @@ struct RegisterView: View {
             }
             .padding(.bottom)
             
-            
             //Login form
             VStack {
                 VStack(alignment: .leading) {
@@ -66,13 +65,14 @@ struct RegisterView: View {
                             .fontWeight(.light)
                             .opacity(0.75)
                         SecureField("Enter Your Password", text: $registerViewModel.password)
+                        Text("Password must be at least 9 characters")
+                            .font(.caption)
+                            .foregroundColor(.gray)
                         
                         Divider()
                     }
                     .padding(.bottom, 15)
                 }
-                .padding(.horizontal, UIScreen.main.bounds.width / 10)
-                
                 
                 VStack {
                     Button(action: {
@@ -87,11 +87,19 @@ struct RegisterView: View {
                     .background(Color("lightBlueColor"))
                     .clipShape(Capsule())
                     .padding(.top, 45)
+                    
+                    ScrollView {
+                        Image(systemName: "info.circle")
+                            .padding(.top, 45)
+                        Text("Simple registration without email confirmation will allow you to easily access your task list from any device, giving you the convenience and flexibility to use the app.")
+                            .font(.subheadline)
+                    }
                 }
             }
             
             Spacer()
         }
+        .padding(.horizontal, UIScreen.main.bounds.width / 10)
     }
 }
 

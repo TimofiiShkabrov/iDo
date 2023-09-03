@@ -28,6 +28,7 @@ struct HomeView: View {
                                 .font(.title)
                                 .bold()
                         }
+                        .padding(.top, 50)
                         .padding(.bottom, 50)
                         
                         Button {
@@ -108,8 +109,6 @@ struct HomeView: View {
                     .padding(.top, 50)
                 }
                 .padding()
-                .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-                .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
                 
                 VStack {
                     HStack {

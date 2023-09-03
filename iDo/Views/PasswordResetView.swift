@@ -23,7 +23,7 @@ struct PasswordResetView: View {
                 SwipeButtonView()
                 
             }
-            .padding()
+            .padding(.vertical)
             
             HStack {
                 Text("Enter your Email")
@@ -32,14 +32,12 @@ struct PasswordResetView: View {
                 .opacity(0.75)
                 Spacer()
             }
-            .padding(.horizontal)
             TextField("Email", text: $email)
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
-                .padding()
+                .padding(.vertical)
             
             Divider()
-                .padding(.horizontal)
             
             Button(action: {
                 PasswordResetViewModel().resetPassword(email: email) { success, error in
@@ -57,22 +55,30 @@ struct PasswordResetView: View {
                     .padding()
                     .background(Color("lightBlueColor"))
                     .clipShape(Capsule())
+                    .padding(.top, 45)
+
             }
             .padding()
             
+            Image(systemName: "info.circle")
+            .padding(.top, 45)
+            Text("When you reset your password, an Email will be sent to you with further instructions.")
+                .font(.subheadline)
+            
             if resetSuccess {
-                Text("Письмо для сброса пароля отправлено на указанный email.")
+                Text("A password reset email has been sent to the provided email.")
                     .foregroundColor(.green)
                     .padding()
             }
             if let resetError = resetError {
-                Text("Ошибка сброса пароля: \(resetError.localizedDescription)")
+                Text("Password reset error:\(resetError.localizedDescription)")
                     .foregroundColor(.red)
                     .padding()
             }
             Spacer()
         }
-        .padding()
+        .padding(.vertical)
+        .padding(.horizontal, UIScreen.main.bounds.width / 10)
     }
 }
 

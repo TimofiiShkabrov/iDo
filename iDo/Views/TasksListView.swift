@@ -46,37 +46,51 @@ struct TasksListView: View {
                 }
             }
             .padding(.horizontal)
-            
+                        
             NavigationView {
-                List(tasks.sorted(by: tasksListViewModel.shortByDateAdded ? { $0.createdDate > $1.createdDate } : { $0.createdDate < $1.createdDate })) { item in
-                    NavigationLink(destination: TaskDetailView(notificationManager: NotificationManager(), task: item)) {
-                        TaskView(task: item)
-                            .swipeActions {
-                                Button(action: {
-                                    tasksListViewModel.delete(id: item.id)
-                                }) {
-                                    Image(systemName: "trash.circle.fill")
-                                }
-                                .tint(.red)
+                List {
+                    Section {
+                        ForEach(tasks.sorted(by: tasksListViewModel.shortByDateAdded ? { $0.createdDate > $1.createdDate } : { $0.createdDate < $1.createdDate })) { item in
+                            NavigationLink(destination: TaskDetailView(notificationManager: NotificationManager(), task: item)) {
+                                TaskView(task: item)
+                                    .swipeActions {
+                                        Button(action: {
+                                            tasksListViewModel.delete(id: item.id)
+                                        }) {
+                                            Image(systemName: "trash.circle.fill")
+                                        }
+                                        .tint(.red)
+                                    }
+                                    .swipeActions(edge: .leading) {
+                                        Button(action: {
+                                            taskViewModel.taskDone(task: item)
+                                        }) {
+                                            Image(systemName: "checkmark.circle.fill")
+                                        }
+                                        .tint(.green)
+                                        }
                             }
-                            .swipeActions(edge: .leading) {
-                                Button(action: {
-                                    taskViewModel.taskDone(task: item)
-                                }) {
-                                    Image(systemName: "checkmark.circle.fill")
-                                }
-                                .tint(.green)
-                            }
+                        }
                     }
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.2))
+                            .frame(width: .infinity)
+                            .cornerRadius(20)
+                            .padding(.bottom, 8)
+                    )
                 }
+                .scrollContentBackground(.hidden)
+                .background()
+                .padding(.top, -25)
             }
-            .padding(.top, 10)
         }
     }
 }
 
 struct TasksListView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksListView(userId: "123")
+        TasksListView(userId: "Q1gQMprsHkgXjDsOWgeRqdUFZG63")
     }
 }

@@ -19,6 +19,9 @@ struct TaskView: View {
                     if task.done {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(Color.green)
+                    } else {
+                        Image(systemName: "circle")
+                            .foregroundColor(Color.red)
                     }
                     Text(task.title)
                         .font(.title2)
@@ -32,6 +35,7 @@ struct TaskView: View {
             Spacer()
             
         }
+        .padding(.bottom, 8)
     }
 }
 

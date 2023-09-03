@@ -12,7 +12,7 @@ struct HeaderLoginView: View {
         ZStack {
             Image("lcbg")
                 .resizable()
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2.2)
                 .cornerRadius(20)
                 .padding(.top, -UIScreen.main.bounds.height / 1.5)
                 .opacity(0.5)
@@ -28,7 +28,7 @@ struct HeaderLoginView: View {
                 Text("Turn your ideas into action!")
                     .fontWeight(.light)
             }
-            .padding(.bottom, UIScreen.main.bounds.height / 1.7)
+            .padding(.top, -UIScreen.main.bounds.height / 2.5)
         }
     }
 }

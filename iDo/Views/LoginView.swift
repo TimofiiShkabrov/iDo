@@ -109,7 +109,7 @@ struct LoginView: View {
                 )
                 .cornerRadius(20)
                 .frame(width: UIScreen.main.bounds.width / 1.3, height: UIScreen.main.bounds.height / 2)
-                .padding(.top, UIScreen.main.bounds.width / 1.5)
+                .padding(.top, UIScreen.main.bounds.width / 2)
             }
             .sheet(isPresented: $loginViewModel.showRegisterView) {
                 RegisterView(showRegisterView: $loginViewModel.showRegisterView)
