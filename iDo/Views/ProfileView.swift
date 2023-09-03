@@ -13,69 +13,74 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Image("lcbg")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                    .cornerRadius(20)
-                    .shadow(radius: 20)
-                    .offset(y: UIScreen.main.bounds.maxY / 2.5)
-                VStack {
-                    if let user = profileViewModel.user {
-                        // avatar
+            VStack {
+                if let user = profileViewModel.user {
+                    // avatar
+                    HStack {
                         ZStack {
                             Circle()
-                                .frame(width: 110, height: 110)
+                                .frame(width: 80, height: 80)
                                 .foregroundColor(Color.white)
                                 .shadow(radius: 20)
                             Image(systemName: "person.circle.fill")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .foregroundColor(Color.blue)
-                                .frame(width: 90, height: 90)
+                                .frame(width: 70, height: 70)
                         }
                         .padding()
-                        // info
                         VStack(alignment: .leading) {
-                            HStack {
-                                Text("Name: ")
-                                    .bold()
-                                Text(user.name)
-                            }
-                            .font(.title2)
-                            HStack {
-                                Text("Email: ")
-                                    .bold()
-                                Text(user.email)
-                            }
-                            .font(.title2)
-                            HStack {
-                                Text("Join date: ")
-                                    .bold()
-                                Text("\(Date(timeIntervalSince1970: user.joinDate).formatted(date: .abbreviated, time: .shortened))")
-                            }
-                            .font(.title2)
+                            Text("Hi, there!")
+                                .bold()
+                                .font(.title2)
+                            Text(user.name)
+                                .bold()
+                                .font(.title)
+                            Text("To complete tasks you only need inspiration, and iDo can handle the rest!")
+                                .font(.subheadline)
+                                .padding(.top, 5)
+                                .padding(.trailing)
                         }
-                        
-                        //log out
-                        Button(action: {
-                            profileViewModel.logOut()
-                        }) {
-                            HStack {
-                                Text("Log out")
-                                Image(systemName: "rectangle.portrait.and.arrow.right")
-                            }
-                            .foregroundColor(.white)
-                            .padding()
-                            .padding(.horizontal)
-                        }
-                        .background(Color.green)
-                        .clipShape(Capsule())
-                        .padding(.top, 45)
-                    } else {
-                        Text("Loading user data...")
                     }
+                    // info
+                    Divider()
+                        .padding()
+                    
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Email: ")
+                                .bold()
+                            Text(user.email)
+                        }
+                        .font(.title2)
+                        .padding(.bottom, 10)
+                        HStack {
+                            Text("Join date: ")
+                                .bold()
+                            Text("\(Date(timeIntervalSince1970: user.joinDate).formatted(date: .abbreviated, time: .shortened))")
+                        }
+                        .font(.title2)
+                    }
+                    
+                    Spacer()
+                    
+                    //log out
+                    Button(action: {
+                        profileViewModel.logOut()
+                    }) {
+                        HStack {
+                            Text("Log out")
+                            Image(systemName: "rectangle.portrait.and.arrow.right")
+                        }
+                        .foregroundColor(.white)
+                        .padding()
+                        .padding(.horizontal)
+                    }
+                    .background(Color.green)
+                    .clipShape(Capsule())
+                    .padding(.top, 45)
+                } else {
+                    Text("Loading user data...")
                 }
             }
         }
