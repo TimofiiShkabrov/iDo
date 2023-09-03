@@ -18,27 +18,12 @@ class TaskDetailViewModel: ObservableObject {
     
     init() {}
     
-    func updateDescription(task: TasksModel) {
+    func updateTitle(task: TasksModel) {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
         
-        let dataBase = Firestore.firestore()
-        dataBase.collection("users")
-            .document(userId)
-            .collection("tasks")
-            .document(task.id)
-            .updateData(["description": editTaskDescription]) { error in
-                if let error = error {
-                    print("Error while updating data: \(error.localizedDescription)")
-                } else {
-                    print("Data updated successfully")
-                }
-            }
-    }
-    
-    func updateTitle(task: TasksModel) {
-        guard let userId = Auth.auth().currentUser?.uid else {
+        guard validateTitle() else {
             return
         }
         
@@ -51,8 +36,45 @@ class TaskDetailViewModel: ObservableObject {
                 if let error = error {
                     print("Error while updating data: \(error.localizedDescription)")
                 } else {
-                    print("Data updated successfully")
+                    print("Title updated successfully")
                 }
             }
+    }
+    
+    func updateDescription(task: TasksModel) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        guard validateDescription() else {
+            return
+        }
+        
+        let dataBase = Firestore.firestore()
+        dataBase.collection("users")
+            .document(userId)
+            .collection("tasks")
+            .document(task.id)
+            .updateData(["description": editTaskDescription]) { error in
+                if let error = error {
+                    print("Error while updating data: \(error.localizedDescription)")
+                } else {
+                    print("Description updated successfully")
+                }
+            }
+    }
+    
+    private func validateTitle () -> Bool {
+        guard !editTaskTitle.isEmpty else {
+            return false
+        }
+        return true
+    }
+    
+    private func validateDescription () -> Bool {
+        guard !editTaskDescription.isEmpty else {
+            return false
+        }
+        return true
     }
 }
