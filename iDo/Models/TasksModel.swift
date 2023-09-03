@@ -9,8 +9,8 @@ import Foundation
 
 struct TasksModel: Codable, Identifiable {
     let id: String
-    let title: String
-    let description: String
+    var title: String
+    var description: String
     let dueDate: TimeInterval
     let createdDate: TimeInterval
     let dateNotification: TimeInterval
@@ -18,5 +18,13 @@ struct TasksModel: Codable, Identifiable {
     
     mutating func setDone(_ state: Bool) {
         done = state
+    }
+    
+    mutating func setDescription(_ state: String) {
+        description = state
+    }
+    
+    mutating func setTitle(_ state: String) {
+        title = state
     }
 }

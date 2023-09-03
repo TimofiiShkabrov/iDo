@@ -10,16 +10,19 @@ import SwiftUI
 struct TaskDetailView: View {
     
     @StateObject var taskViewModel = TaskViewModel()
+    @StateObject var taskDetailViewModel = TaskDetailViewModel()
     @ObservedObject var notificationManager: NotificationManager
-    @State var editTask = false
     var task: TasksModel
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(task.title)
-                    .font(.title)
-                
+                if taskDetailViewModel.editTask {
+                    TextField("Enter the name of the task", text: $taskDetailViewModel.editTaskTitle)
+                } else {
+                    Text(task.title)
+                        .font(.title)
+                }
                 Spacer()
                 
                 Button(action: {
@@ -52,13 +55,19 @@ struct TaskDetailView: View {
                         }
                         .padding(.bottom, 5)
                         
-                        Text(task.description)
-                            .font(.body)
+                        if taskDetailViewModel.editTask {
+                            TextField("Enter a description of the task", text: $taskDetailViewModel.editTaskDescription)
+                        } else {
+                            Text(task.description)
+                                .font(.body)
+                        }
                     }
                     .padding()
                     .background(Color.cyan.opacity(0.3))
                     .cornerRadius(20)
                     .padding(.bottom, 5)
+                    .frame(width: .infinity)
+
                     
                     if task.dateNotification != task.createdDate {
                         HStack {
@@ -124,17 +133,33 @@ struct TaskDetailView: View {
                         .frame(width: 50, height: 50)
                         .foregroundColor(Color.white)
                         .shadow(radius: 20)
-                    Button(action: {
-                        editTask.toggle()
-                    }) {
-                        Image(systemName: self.editTask ? "checkmark.circle.fill" : "square.and.pencil.circle.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 45, height: 45)
-                            .foregroundColor(Color("lightBlueColor"))
+                    if taskDetailViewModel.editTask != true {
+                        Button(action: {
+                            taskDetailViewModel.editTask = true
+                        }) {
+                            Image(systemName: "square.and.pencil.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 45, height: 45)
+                                .foregroundColor(Color("lightBlueColor"))
+                        }
+                        .padding()
+                    } else {
+                        Button(action: {
+                            taskDetailViewModel.updateTitle(task: task)
+                            taskDetailViewModel.updateDescription(task: task)
+                            taskDetailViewModel.editTask = false
+                        }) {
+                            Image(systemName: "checkmark.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 45, height: 45)
+                                .foregroundColor(Color("lightBlueColor"))
+                        }
+                        .padding()
                     }
-                    .padding()
                 }
+                .padding(.bottom, 50)
             }
         }
         .padding(.horizontal)

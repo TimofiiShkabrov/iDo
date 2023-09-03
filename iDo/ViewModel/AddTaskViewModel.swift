@@ -38,7 +38,6 @@ class AddTaskViewModel: ObservableObject {
             .document(userId)
             .collection("tasks")
             .document(newId)
-//            .setData(newTask.asDictionary())
             .setData(newTask.asDictionary()) { error in
                 if let error = error {
                     print("Firestore write error: \(error.localizedDescription)")

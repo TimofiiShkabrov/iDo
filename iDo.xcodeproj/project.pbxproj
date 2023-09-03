@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		222A9B792AA3948400C4AFFE /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A9B782AA3948400C4AFFE /* TaskDetailViewModel.swift */; };
 		222CA8D92A75B93A003F6952 /* SwipeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CA8D82A75B93A003F6952 /* SwipeButtonView.swift */; };
 		224D17162A716DCF000545A2 /* iDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D17152A716DCF000545A2 /* iDoApp.swift */; };
 		224D17182A716DCF000545A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D17172A716DCF000545A2 /* HomeView.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		222A9B782AA3948400C4AFFE /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
 		222CA8D82A75B93A003F6952 /* SwipeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeButtonView.swift; sourceTree = "<group>"; };
 		224D17122A716DCF000545A2 /* iDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		224D17152A716DCF000545A2 /* iDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDoApp.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				22EC56162A8160AD0004201D /* HeaderTasksListViewModel.swift */,
 				22E965F62A8CF03D0027E500 /* InfoViewModel.swift */,
 				22BD5F5D2A98C3FA00855046 /* PasswordResetViewModel.swift */,
+				222A9B782AA3948400C4AFFE /* TaskDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				224D17522A717403000545A2 /* ProfileViewModel.swift in Sources */,
 				222CA8D92A75B93A003F6952 /* SwipeButtonView.swift in Sources */,
 				224D174C2A7173EC000545A2 /* LoginViewModel.swift in Sources */,
+				222A9B792AA3948400C4AFFE /* TaskDetailViewModel.swift in Sources */,
 				224D17562A717410000545A2 /* TaskViewModel.swift in Sources */,
 				22883D382A7C0C7A00A39701 /* NotificationsManager.swift in Sources */,
 				22EC56132A80EFB20004201D /* HeaderLoginView.swift in Sources */,
