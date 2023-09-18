@@ -83,6 +83,7 @@ struct ProfileView: View {
                     Text("Loading user data...")
                 }
             }
+            .padding(.top)
         }
         .onAppear {
             profileViewModel.fetchUser()
