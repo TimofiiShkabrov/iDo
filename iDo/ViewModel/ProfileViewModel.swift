@@ -13,6 +13,7 @@ class ProfileViewModel: ObservableObject {
     init() {}
     
     @Published var user: User? = nil
+    @Published var showingAlert = false
     
     func fetchUser() {
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -39,6 +40,27 @@ class ProfileViewModel: ObservableObject {
             try Auth.auth().signOut()
         } catch {
             print(error)
+        }
+    }
+    
+//    func deleteAccount() {
+//        do {
+//            try Auth.auth().currentUser?.delete()
+//        } catch {
+//            print(error)
+//        }
+//    }
+    
+    func deleteUser() {
+        let user = Auth.auth().currentUser
+
+        user?.delete { error in
+          if let error = error {
+            // An error happened.
+              print(error)
+          } else {
+            // Account deleted.
+          }
         }
     }
 }
