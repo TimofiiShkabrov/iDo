@@ -55,13 +55,13 @@ struct PasswordResetView: View {
                     .padding()
                     .background(Color("lightBlueColor"))
                     .clipShape(Capsule())
-                    .padding(.top, 45)
+                    .padding(.top)
 
             }
             .padding()
             
             Image(systemName: "info.circle")
-            .padding(.top, 45)
+            .padding(.top)
             Text("When you reset your password, an Email will be sent to you with further instructions.")
                 .font(.subheadline)
             

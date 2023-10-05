@@ -133,6 +133,7 @@ struct FAQView: View {
                 Text("If you have any more questions or need assistance, feel free to reach out to our support team. We're here to help you make the most of your iDo experience!")
             }
             .padding(.horizontal)
+            .padding(.bottom)
         }
     }
 }

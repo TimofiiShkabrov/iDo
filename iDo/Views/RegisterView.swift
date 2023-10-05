@@ -71,7 +71,6 @@ struct RegisterView: View {
                         
                         Divider()
                     }
-                    .padding(.bottom, 15)
                 }
                 
                 VStack {
@@ -86,11 +85,11 @@ struct RegisterView: View {
                     }
                     .background(Color("lightBlueColor"))
                     .clipShape(Capsule())
-                    .padding(.top, 45)
+                    .padding(.top)
                     
                     ScrollView {
                         Image(systemName: "info.circle")
-                            .padding(.top, 45)
+                            .padding(.top)
                         Text("Simple registration without email confirmation will allow you to easily access your task list from any device, giving you the convenience and flexibility to use the app.")
                             .font(.subheadline)
                     }

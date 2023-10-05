@@ -43,14 +43,6 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-//    func deleteAccount() {
-//        do {
-//            try Auth.auth().currentUser?.delete()
-//        } catch {
-//            print(error)
-//        }
-//    }
-    
     func deleteUser() {
         let user = Auth.auth().currentUser
 

@@ -33,7 +33,10 @@ struct FeedbackAndSupportView: View {
                     Text(" · Email: timofii.shkabrov@gmail.com")
                         .padding(.horizontal)
                         .padding(.bottom, 5)
-                    Text(" · Website: ido.timlab.online")
+                    HStack {
+                        Text(" · Website:")
+                        Link("idoapp.netlify.app", destination: URL(string: "https://idoapp.netlify.app")!)
+                    }
                         .padding(.horizontal)
                         .padding(.bottom)
                     Text("  Before reaching out, you might want to check our Frequently Asked Questions (FAQs) section on our website. You might find the answer to your question there.")
