@@ -12,7 +12,7 @@ import FirebaseFirestore
 class ProfileViewModel: ObservableObject {
     init() {}
     
-    @Published var user: User? = nil
+    @Published var user: UserModel? = nil
     @Published var showingAlert = false
     
     func fetchUser() {
@@ -25,7 +25,7 @@ class ProfileViewModel: ObservableObject {
                 return
             }
             DispatchQueue.main.async {
-                self?.user = User(
+                self?.user = UserModel(
                     id: data["id"] as? String ?? "",
                     name: data["name"] as? String ?? "",
                     email: data["email"] as? String ?? "",

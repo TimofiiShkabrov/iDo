@@ -15,7 +15,7 @@ struct ProfileView: View {
         NavigationView {
             VStack {
                 if let user = profileViewModel.user {
-                    // avatar
+                    //  avatar
                     HStack {
                         ZStack {
                             Circle()
@@ -96,7 +96,23 @@ struct ProfileView: View {
                         .clipShape(Capsule())
                     }
                 } else {
-                    Text("Loading user data...")
+                    VStack {
+                        Text("Loading user data...")
+                        //log out
+                        Button(action: {
+                            profileViewModel.logOut()
+                        }) {
+                            HStack {
+                                Text("Log out")
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                            }
+                            .foregroundColor(.white)
+                            .padding()
+                            .padding(.horizontal)
+                        }
+                        .background(Color.green)
+                        .clipShape(Capsule())
+                    }
                 }
             }
             .padding(.top)

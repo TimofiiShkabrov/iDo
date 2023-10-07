@@ -65,7 +65,7 @@ struct RegisterView: View {
                             .fontWeight(.light)
                             .opacity(0.75)
                         SecureField("Enter Your Password", text: $registerViewModel.password)
-                        Text("Password must be at least 9 characters")
+                        Text("Password must be at least 6 characters")
                             .font(.caption)
                             .foregroundColor(.gray)
                         
