@@ -14,7 +14,9 @@ class RegisterViewModel: ObservableObject {
     @Published var name = ""
     @Published var email = ""
     @Published var password = ""
+    @Published var errorMassage = ""
     @Published var showRegisterView = false
+    @Published var showingAlert = false
     
     init() {}
     
@@ -25,6 +27,8 @@ class RegisterViewModel: ObservableObject {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             if let error = error {
                 print("Error creating user: \(error)")
+                self?.errorMassage = error.localizedDescription
+                self?.showingAlert = true
                 return
             }
             guard let userId = result?.user.uid else {
@@ -47,6 +51,8 @@ class RegisterViewModel: ObservableObject {
             .setData(newUser.asDictionary()) { error in
                 if let error = error {
                     print("Error saving user to Firestore: \(error)")
+                    self.errorMassage = error.localizedDescription
+                    self.showingAlert = true
                 } else {
                     self.showRegisterView = false
                 }
@@ -57,14 +63,17 @@ class RegisterViewModel: ObservableObject {
         guard !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
               !email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
               !password.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            errorMassage = "Please fill in all fields."
             return false
         }
         
         guard email.contains("@") && email.contains(".") else {
+            errorMassage = "Enter a valid email"
             return false
         }
         
         guard password.count >= 6 else {
+            errorMassage = "Enter a valid password"
             return false
         }
         return true

@@ -30,6 +30,12 @@ struct RegisterView: View {
             VStack {
                 VStack(alignment: .leading) {
                     VStack(alignment: .leading) {
+                        if !registerViewModel.errorMassage.isEmpty {
+                            Text(registerViewModel.errorMassage)
+                                .foregroundColor(Color.red)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.bottom)
+                        }
                         Text("Name")
                             .font(.headline)
                             .fontWeight(.light)

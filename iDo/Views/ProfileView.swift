@@ -99,19 +99,38 @@ struct ProfileView: View {
                     VStack {
                         Text("Loading user data...")
                         //log out
-                        Button(action: {
-                            profileViewModel.logOut()
-                        }) {
-                            HStack {
-                                Text("Log out")
-                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                        HStack {
+                            //Delete account
+                            Button(action: {
+                                profileViewModel.showingAlert = true
+                            }) {
+                                HStack {
+                                    Text("Delete account")
+                                    Image(systemName: "trash.fill")
+                                }
+                                .foregroundColor(.white)
+                                .padding()
+                                .padding(.horizontal)
                             }
-                            .foregroundColor(.white)
-                            .padding()
-                            .padding(.horizontal)
+                            .background(Color.red)
+                            .clipShape(Capsule())
+                            
+                            //log out
+                            Button(action: {
+                                profileViewModel.logOut()
+                            }) {
+                                HStack {
+                                    Text("Log out")
+                                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                                }
+                                .foregroundColor(.white)
+                                .padding()
+                                .padding(.horizontal)
+                            }
+                            .background(Color.green)
+                            .clipShape(Capsule())
                         }
-                        .background(Color.green)
-                        .clipShape(Capsule())
+
                     }
                 }
             }
