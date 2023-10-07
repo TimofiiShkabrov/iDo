@@ -12,9 +12,7 @@ class LoginViewModel: ObservableObject {
     
     @Published var email = ""
     @Published var password = ""
-    @Published var errorMassage = ""
-    @Published var showRegisterView = false
-    
+    @Published var errorMassage = ""    
     
     init() {}
     

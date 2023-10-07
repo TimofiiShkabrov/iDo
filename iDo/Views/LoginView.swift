@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject var loginViewModel = LoginViewModel()
+    @StateObject var registerViewModel = RegisterViewModel()
     @StateObject var passwordResetViewModel = PasswordResetViewModel()
     
     var body: some View {
@@ -71,7 +72,7 @@ struct LoginView: View {
                         Button(action: {
                             loginViewModel.login()
                         }) {
-                            Text("Sing In")
+                            Text("Sign In")
                                 .foregroundColor(.white)
                                 .frame(width: UIScreen.main.bounds.width / 3)
                                 .padding()
@@ -89,7 +90,7 @@ struct LoginView: View {
                                 .foregroundColor(Color.gray.opacity(0.5))
                             Button(action: {
                                 withAnimation {
-                                    loginViewModel.showRegisterView = true
+                                    registerViewModel.showRegisterView = true
                                 }
                             }) {
                                 Text("Sign Up")
@@ -111,8 +112,8 @@ struct LoginView: View {
                 .frame(width: UIScreen.main.bounds.width / 1.3, height: UIScreen.main.bounds.height / 2)
                 .padding(.top, UIScreen.main.bounds.width / 2)
             }
-            .sheet(isPresented: $loginViewModel.showRegisterView) {
-                RegisterView(showRegisterView: $loginViewModel.showRegisterView)
+            .sheet(isPresented: $registerViewModel.showRegisterView) {
+                RegisterView()
                     .cornerRadius(50)
             }
             .sheet(isPresented: $passwordResetViewModel.showPasswordResetView) {

@@ -14,6 +14,7 @@ class RegisterViewModel: ObservableObject {
     @Published var name = ""
     @Published var email = ""
     @Published var password = ""
+    @Published var showRegisterView = false
     
     init() {}
     
@@ -46,6 +47,8 @@ class RegisterViewModel: ObservableObject {
             .setData(newUser.asDictionary()) { error in
                 if let error = error {
                     print("Error saving user to Firestore: \(error)")
+                } else {
+                    self.showRegisterView = false
                 }
             }
     }

@@ -10,7 +10,6 @@ import SwiftUI
 struct RegisterView: View {
     
     @StateObject var registerViewModel = RegisterViewModel()
-    @Binding var showRegisterView: Bool
     
     var body: some View {
         VStack {
@@ -76,9 +75,8 @@ struct RegisterView: View {
                 VStack {
                     Button(action: {
                         registerViewModel.createUser()
-                        showRegisterView = false
                     }) {
-                        Text("Sing Up")
+                        Text("Sign Up")
                             .foregroundColor(.white)
                             .frame(width: UIScreen.main.bounds.width / 3)
                             .padding()
@@ -104,9 +102,7 @@ struct RegisterView: View {
 
 
 struct RegisterView_Previews: PreviewProvider {
-    @State static var showRegisterView = true
-    
     static var previews: some View {
-        RegisterView(showRegisterView: $showRegisterView)
+        RegisterView()
     }
 }
