@@ -102,19 +102,18 @@ struct TaskDetailView: View {
                         .padding(.bottom, 5)
                         
                         
-                        if task.dateNotification != task.createdDate {
+                        if task.dateNotification == task.dueDate {
+                            HStack {
+                                Image(systemName: "bell")
+                                Text("Notification date not selected")
+                            }
+                            .padding(.horizontal)
+                            .padding(.bottom, 5)
+                        } else {
                             HStack {
                                 Image(systemName: "bell")
                                 Text("Notification date:")
                                 Text("\(Date(timeIntervalSince1970: task.dateNotification).formatted(date: .abbreviated, time: .shortened))")
-                            }
-                            .padding(.horizontal)
-                            .padding(.bottom, 5)
-                            
-                        } else {
-                            HStack {
-                                Image(systemName: "bell")
-                                Text("Notification date not selected")
                             }
                             .padding(.horizontal)
                             .padding(.bottom, 5)
@@ -133,8 +132,8 @@ struct TaskDetailView: View {
                                     DatePicker("Notification date", selection: $notificationManager.dateNotification)
                                     
                                     Button(action: {
-                                        //
                                         handleNotifications()
+                                        $notificationManager.showNotificationDatePicker.wrappedValue = false
                                     }) {
                                         Text("Remind me")
                                             .foregroundColor(.white)

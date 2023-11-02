@@ -16,7 +16,7 @@ class AddTaskViewModel: ObservableObject {
     @Published var dueDate = Date()
     @Published var dateNotification = Date()
     @Published var showAlert = false
-    
+      
     init() {}
     
     func save() {

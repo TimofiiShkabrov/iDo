@@ -22,9 +22,6 @@ struct AddTaskView: View {
                     .textFieldStyle(DefaultTextFieldStyle())
                     .font(.system(size: 25))
                     .padding(10)
-                    .onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
                 
                 //Description
                 TextField("Enter a description for the task", text: $addTaskViewModel.description, axis: .vertical)
@@ -32,9 +29,7 @@ struct AddTaskView: View {
                     .textFieldStyle(DefaultTextFieldStyle())
                     .font(.system(size: 18))
                     .padding(10)
-                    .onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
+                
                 //Do date
                 DatePicker("Due date", selection: $addTaskViewModel.dueDate)
                     .datePickerStyle(GraphicalDatePickerStyle())
@@ -56,7 +51,6 @@ struct AddTaskView: View {
                 
                 // Button
                 Button(action: {
-                    //
                     saveTask()
                     handleNotifications()
                 }) {
@@ -67,6 +61,9 @@ struct AddTaskView: View {
                 }
                 .background(Color("lightBlueColor"))
                 .clipShape(Capsule())
+            }
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
             .alert(isPresented: $addTaskViewModel.showAlert) {
                 Alert(title: Text("Ops!"), message: Text("Please fill in all fields and set a due date no later than today and notification of the task should not be earlier than its creation."))
@@ -82,7 +79,7 @@ struct AddTaskView: View {
             addTaskViewModel.showAlert = true
         }
     }
-
+    
     func handleNotifications() {
         if notificationManager.showNotificationDatePicker {
             notificationManager.requestPermission()
@@ -91,6 +88,8 @@ struct AddTaskView: View {
             } else {
                 addTaskViewModel.showAlert = true
             }
+        } else {
+            addTaskViewModel.dateNotification = addTaskViewModel.dueDate
         }
     }
 }
