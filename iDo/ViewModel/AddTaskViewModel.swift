@@ -16,7 +16,7 @@ class AddTaskViewModel: ObservableObject {
     @Published var dueDate = Date()
     @Published var dateNotification = Date()
     @Published var showAlert = false
-    
+      
     init() {}
     
     func save() {
@@ -30,7 +30,15 @@ class AddTaskViewModel: ObservableObject {
         
         // create model data
         let newId = UUID().uuidString
-        let newTask = TasksModel(id: newId, title: title, description: description, dueDate: dueDate.timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, dateNotification: dateNotification.timeIntervalSince1970, done: false)
+        let newTask = TasksModel(
+            id: newId,
+            title: title,
+            description: description,
+            dueDate: dueDate.timeIntervalSince1970,
+            createdDate: Date().timeIntervalSince1970,
+            dateNotification: dateNotification.timeIntervalSince1970,
+            done: false
+        )
         
         // save model data
         let dataBase = Firestore.firestore()

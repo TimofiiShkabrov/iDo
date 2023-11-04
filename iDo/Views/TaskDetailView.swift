@@ -101,20 +101,24 @@ struct TaskDetailView: View {
                         .cornerRadius(20)
                         .padding(.bottom, 5)
                         
-                        
-                        if task.dateNotification != task.createdDate {
+                        // Notification date
+                        let calendar = Calendar.current
+                        // Round the date to the nearest minute
+                        let roundDateNotification = calendar.date(bySetting: .second, value: 0, of: Date(timeIntervalSince1970: task.dateNotification))
+                        let roundCreatedDate = calendar.date(bySetting: .second, value: 0, of: Date(timeIntervalSince1970: task.createdDate))
+                        // Compare round dates
+                        if roundDateNotification == roundCreatedDate {
+                            HStack {
+                                Image(systemName: "bell")
+                                Text("Notification date not selected")
+                            }
+                            .padding(.horizontal)
+                            .padding(.bottom, 5)
+                        } else {
                             HStack {
                                 Image(systemName: "bell")
                                 Text("Notification date:")
                                 Text("\(Date(timeIntervalSince1970: task.dateNotification).formatted(date: .abbreviated, time: .shortened))")
-                            }
-                            .padding(.horizontal)
-                            .padding(.bottom, 5)
-                            
-                        } else {
-                            HStack {
-                                Image(systemName: "bell")
-                                Text("Notification date not selected")
                             }
                             .padding(.horizontal)
                             .padding(.bottom, 5)
@@ -133,8 +137,8 @@ struct TaskDetailView: View {
                                     DatePicker("Notification date", selection: $notificationManager.dateNotification)
                                     
                                     Button(action: {
-                                        //
                                         handleNotifications()
+                                        $notificationManager.showNotificationDatePicker.wrappedValue = false
                                     }) {
                                         Text("Remind me")
                                             .foregroundColor(.white)

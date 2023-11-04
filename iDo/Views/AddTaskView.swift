@@ -16,25 +16,25 @@ struct AddTaskView: View {
     var body: some View {
         VStack {
             Form {
-                //Title
-                TextField("Enter the task name", text: $addTaskViewModel.title, axis: .vertical)
-                    .lineLimit(nil)
-                    .textFieldStyle(DefaultTextFieldStyle())
-                    .font(.system(size: 25))
-                    .padding(10)
-                    .onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
-                
-                //Description
-                TextField("Enter a description for the task", text: $addTaskViewModel.description, axis: .vertical)
-                    .lineLimit(nil)
-                    .textFieldStyle(DefaultTextFieldStyle())
-                    .font(.system(size: 18))
-                    .padding(10)
-                    .onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
+                VStack {
+                    //Title
+                    TextField("Enter the task name", text: $addTaskViewModel.title, axis: .vertical)
+                        .lineLimit(nil)
+                        .textFieldStyle(DefaultTextFieldStyle())
+                        .font(.system(size: 25))
+                        .padding(10)
+                    
+                    //Description
+                    TextField("Enter a description for the task", text: $addTaskViewModel.description, axis: .vertical)
+                        .lineLimit(nil)
+                        .textFieldStyle(DefaultTextFieldStyle())
+                        .font(.system(size: 18))
+                        .padding(10)
+                }
+                .onTapGesture {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
+                    
                 //Do date
                 DatePicker("Due date", selection: $addTaskViewModel.dueDate)
                     .datePickerStyle(GraphicalDatePickerStyle())
@@ -56,7 +56,6 @@ struct AddTaskView: View {
                 
                 // Button
                 Button(action: {
-                    //
                     saveTask()
                     handleNotifications()
                 }) {
@@ -82,7 +81,7 @@ struct AddTaskView: View {
             addTaskViewModel.showAlert = true
         }
     }
-
+    
     func handleNotifications() {
         if notificationManager.showNotificationDatePicker {
             notificationManager.requestPermission()
@@ -91,6 +90,8 @@ struct AddTaskView: View {
             } else {
                 addTaskViewModel.showAlert = true
             }
+        } else {
+            addTaskViewModel.dateNotification = Date()
         }
     }
 }
