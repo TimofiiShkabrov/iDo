@@ -67,6 +67,9 @@ struct AddTaskView: View {
                 .background(Color("lightBlueColor"))
                 .clipShape(Capsule())
             }
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
             .alert(isPresented: $addTaskViewModel.showAlert) {
                 Alert(title: Text("Ops!"), message: Text("Please fill in all fields and set a due date no later than today and notification of the task should not be earlier than its creation."))
             }
