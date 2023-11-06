@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TaskDetailView: View {
-    
+        
     @StateObject var taskViewModel = TaskViewModel()
     @StateObject var taskDetailViewModel = TaskDetailViewModel()
     @ObservedObject var notificationManager: NotificationManager
     var task: TasksModel
-    
+        
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
@@ -105,9 +105,9 @@ struct TaskDetailView: View {
                         let calendar = Calendar.current
                         // Round the date to the nearest minute
                         let roundDateNotification = calendar.date(bySetting: .second, value: 0, of: Date(timeIntervalSince1970: task.dateNotification))
-                        let roundCreatedDate = calendar.date(bySetting: .second, value: 0, of: Date(timeIntervalSince1970: task.createdDate))
+                        let roundDueDate = calendar.date(bySetting: .second, value: 0, of: Date(timeIntervalSince1970: task.dueDate))
                         // Compare round dates
-                        if roundDateNotification == roundCreatedDate {
+                        if roundDateNotification == roundDueDate {
                             HStack {
                                 Image(systemName: "bell")
                                 Text("Notification date not selected")
@@ -135,17 +135,22 @@ struct TaskDetailView: View {
                             if notificationManager.showNotificationDatePicker {
                                 VStack {
                                     DatePicker("Notification date", selection: $notificationManager.dateNotification)
+                                        .onReceive(notificationManager.$dateNotification) { newDate in
+                                                taskDetailViewModel.updateDateNotification(task: task)
+                                                taskDetailViewModel.editDateNotification = newDate.timeIntervalSince1970
+                                            }
                                     
                                     Button(action: {
                                         handleNotifications()
-                                        $notificationManager.showNotificationDatePicker.wrappedValue = false
+                                        taskDetailViewModel.updateDateNotification(task: task)
                                     }) {
                                         Text("Remind me")
                                             .foregroundColor(.white)
                                             .frame(width: UIScreen.main.bounds.width / 1.3)
                                             .padding()
                                     }
-                                    .background(Color("lightBlueColor"))
+                                    .disabled(notificationManager.dateNotification <= Date())
+                                    .background(notificationManager.dateNotification <= Date() ? Color.gray.opacity(0.5) : Color("lightBlueColor"))
                                     .clipShape(Capsule())
                                     .padding(.vertical)
                                     
@@ -171,7 +176,11 @@ struct TaskDetailView: View {
     func handleNotifications() {
         if notificationManager.showNotificationDatePicker {
             notificationManager.requestPermission()
-            notificationManager.scheduleNotification()
+            if notificationManager.dateNotification >= Date() {
+                notificationManager.title = task.title
+                notificationManager.scheduleNotification()
+                $notificationManager.showNotificationDatePicker.wrappedValue = false
+            }
         }
     }
 }

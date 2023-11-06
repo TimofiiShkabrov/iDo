@@ -28,8 +28,8 @@ class NotificationManager: ObservableObject {
     
     func scheduleNotification() {
         let content = UNMutableNotificationContent()
-        content.title = "Reminder of the task"
-        content.subtitle = title
+        content.title = title
+        content.subtitle = "Reminder of the task"
         content.sound = UNNotificationSound.default
         
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: dateNotification)
@@ -37,6 +37,8 @@ class NotificationManager: ObservableObject {
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request)
+        
+        print("Notification scheduled")
     }
 }
 
