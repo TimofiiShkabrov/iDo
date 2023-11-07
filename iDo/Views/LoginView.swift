@@ -88,6 +88,7 @@ struct LoginView: View {
                         HStack {
                             Text("Don't have an account?")
                                 .foregroundColor(Color.gray.opacity(0.5))
+                           
                             Button(action: {
                                 withAnimation {
                                     registerViewModel.showRegisterView = true
@@ -119,6 +120,9 @@ struct LoginView: View {
             .sheet(isPresented: $passwordResetViewModel.showPasswordResetView) {
                 PasswordResetView(showPasswordResetView: $passwordResetViewModel.showPasswordResetView)
             }
+        }
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
 }

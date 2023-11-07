@@ -77,7 +77,7 @@ struct RegisterView: View {
                         Divider()
                     }
                 }
-                
+                                
                 VStack {
                     Button(action: {
                         registerViewModel.createUser()
@@ -101,6 +101,9 @@ struct RegisterView: View {
             }
             
             Spacer()
+        }
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
         .padding(.horizontal, UIScreen.main.bounds.width / 10)
     }
