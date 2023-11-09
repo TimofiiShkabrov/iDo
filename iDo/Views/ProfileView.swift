@@ -21,7 +21,7 @@ struct ProfileView: View {
                             Circle()
                                 .frame(width: 80, height: 80)
                                 .foregroundColor(Color.white)
-                                .shadow(radius: 20)
+                                .shadow(radius: 10)
                             Image(systemName: "person.circle.fill")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -45,55 +45,59 @@ struct ProfileView: View {
                     // info
                     Divider()
                         .padding()
-                    
                     VStack(alignment: .leading) {
-                        HStack {
-                            Text("Email: ")
-                                .bold()
-                            Text(user.email)
-                        }
-                        .font(.title2)
-                        .padding(.bottom, 10)
-                        HStack {
-                            Text("Join date: ")
-                                .bold()
-                            Text("\(Date(timeIntervalSince1970: user.joinDate).formatted(date: .abbreviated, time: .shortened))")
-                        }
-                        .font(.title2)
-                    }
-                    
-                    Spacer()
-                    
-                    HStack {
-                        //Delete account
-                        Button(action: {
-                            profileViewModel.showingAlert = true
-                        }) {
+                        VStack(alignment: .leading) {
                             HStack {
-                                Text("Delete account")
-                                Image(systemName: "trash.fill")
+                                Text("Email: ")
+                                    .bold()
+                                Text(user.email)
                             }
-                            .foregroundColor(.white)
-                            .padding()
-                            .padding(.horizontal)
+                            .padding(.bottom, 10)
+                            HStack {
+                                Text("Join date: ")
+                                    .bold()
+                                Text("\(Date(timeIntervalSince1970: user.joinDate).formatted(date: .abbreviated, time: .shortened))")
+                            }
                         }
-                        .background(Color.red)
-                        .clipShape(Capsule())
                         
-                        //log out
-                        Button(action: {
-                            profileViewModel.logOut()
-                        }) {
-                            HStack {
-                                Text("Log out")
-                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                        Spacer()
+                        
+                        HStack {
+                            //Delete account
+                            Button(action: {
+                                profileViewModel.showingAlert = true
+                            }) {
+                                HStack {
+                                    Text("Delete account")
+                                        .font(.subheadline)
+                                    Image(systemName: "trash")
+                                        .font(.subheadline)
+                                }
+                                .foregroundColor(.white)
+                                .padding(5)
+                                .padding(.horizontal)
                             }
-                            .foregroundColor(.white)
-                            .padding()
-                            .padding(.horizontal)
+                            .background(Color.red)
+                            .clipShape(Capsule())
+                            
+                            //log out
+                            Button(action: {
+                                profileViewModel.logOut()
+                            }) {
+                                HStack {
+                                    Text("Log out")
+                                        .font(.subheadline)
+                                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                                        .font(.subheadline)
+                                }
+                                .foregroundColor(.white)
+                                .padding(5)
+                                .padding(.horizontal)
+                            }
+                            .background(Color.green)
+                            .clipShape(Capsule())
                         }
-                        .background(Color.green)
-                        .clipShape(Capsule())
+                        .padding(.bottom, 5)
                     }
                 } else {
                     VStack {
@@ -106,10 +110,12 @@ struct ProfileView: View {
                             }) {
                                 HStack {
                                     Text("Delete account")
-                                    Image(systemName: "trash.fill")
+                                        .font(.subheadline)
+                                    Image(systemName: "trash")
+                                        .font(.subheadline)
                                 }
                                 .foregroundColor(.white)
-                                .padding()
+                                .padding(5)
                                 .padding(.horizontal)
                             }
                             .background(Color.red)
@@ -121,10 +127,12 @@ struct ProfileView: View {
                             }) {
                                 HStack {
                                     Text("Log out")
+                                        .font(.subheadline)
                                     Image(systemName: "rectangle.portrait.and.arrow.right")
+                                        .font(.subheadline)
                                 }
                                 .foregroundColor(.white)
-                                .padding()
+                                .padding(5)
                                 .padding(.horizontal)
                             }
                             .background(Color.green)
