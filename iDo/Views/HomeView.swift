@@ -22,11 +22,10 @@ struct HomeView: View {
                         HStack {
                             Image("logo-png")
                                 .resizable()
-                                .frame(width: 35, height: 35)
+                                .frame(width: 50, height: 50)
                             
                             Text("iDO")
-                                .font(.title)
-                                .bold()
+                                .font(.system(size: 50, weight: .bold))
                         }
                         .padding(.top, 50)
                         .padding(.bottom, 50)
@@ -43,7 +42,7 @@ struct HomeView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(Color("lightBlueColor"))
-                            Text("My tasks")
+                            Text("Tasks")
                                 .font(.title)
                         }
                         
@@ -61,7 +60,7 @@ struct HomeView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(Color("lightBlueColor"))
-                            Text("Add new task")
+                            Text("Add")
                                 .font(.title)
                             
                         }

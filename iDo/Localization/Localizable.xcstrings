@@ -561,6 +561,23 @@
         }
       }
     },
+    "Add" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати"
+          }
+        }
+      }
+    },
     "Add new task" : {
       "localizations" : {
         "ru" : {
@@ -1637,6 +1654,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Завдання успішно збережено!"
+          }
+        }
+      }
+    },
+    "Tasks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Задачи"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завдання"
           }
         }
       }
