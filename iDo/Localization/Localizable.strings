@@ -684,7 +684,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Видалити аккаунт"
+            "value" : "Видалити обліковий запис"
           }
         }
       }
@@ -722,7 +722,6 @@
       }
     },
     "Don't have an account?" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
