@@ -85,20 +85,16 @@ struct LoginView: View {
                             .foregroundColor(Color.gray.opacity(0.5))
                             .padding(.top, 10)
                         
-                        HStack {
-                            Text("Don't have an account?")
-                                .foregroundColor(Color.gray.opacity(0.5))
-                           
-                            Button(action: {
-                                withAnimation {
-                                    registerViewModel.showRegisterView = true
-                                }
-                            }) {
-                                Text("Sign Up")
+                        Button(action: {
+                            withAnimation {
+                                registerViewModel.showRegisterView = true
                             }
-                            .foregroundColor(Color.blue)
+                        }) {
+                            Text("Sign Up")
                         }
+                        .foregroundColor(Color.blue)
                         .padding(.top, 5)
+                        .padding(.horizontal, 25)
                     }
                 }
                 .padding(.vertical, 30)

@@ -84,7 +84,6 @@ struct RegisterView: View {
                     }) {
                         Text("Sign Up")
                             .foregroundColor(.white)
-                            .frame(width: UIScreen.main.bounds.width / 3)
                             .padding()
                     }
                     .background(Color("lightBlueColor"))
@@ -105,7 +104,7 @@ struct RegisterView: View {
         .onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
-        .padding(.horizontal, UIScreen.main.bounds.width / 10)
+        .padding()
     }
 }
 
