@@ -21,7 +21,6 @@ struct SaveTaskView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 200, height: 200)
-                        .padding(.bottom, -30)
                     Text("Task saved successfully!")
                         .font(.title3)
                     HStack {
@@ -31,10 +30,9 @@ struct SaveTaskView: View {
                         }) {
                             HStack {
                                 Text("Tasks list")
-                                    .padding(.vertical)
                                 Image(systemName: "text.line.first.and.arrowtriangle.forward")
                             }
-                            .frame(width: UIScreen.main.bounds.width / 3)
+                            .padding()
                             .foregroundColor(Color.white)
                             
                         }
@@ -47,10 +45,9 @@ struct SaveTaskView: View {
                         }) {
                             HStack {
                                 Text("New task")
-                                    .padding(.vertical)
                                 Image(systemName: "plus.circle")
                             }
-                            .frame(width: UIScreen.main.bounds.width / 3)
+                            .padding()
                             .foregroundColor(Color.white)
                         }
                         .background(Color("lightBlueColor"))

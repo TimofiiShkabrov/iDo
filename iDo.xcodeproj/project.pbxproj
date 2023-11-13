@@ -125,6 +125,7 @@
 				22E965FA2A8CFDBF0027E500 /* TermsOfUseView.swift */,
 				22E965FC2A8D02020027E500 /* FeedbackAndSupportView.swift */,
 				22E965FE2A8D041F0027E500 /* FAQView.swift */,
+				22DA899B2A93D76C00761640 /* SaveTaskView.swift */,
 			);
 			path = OtherView;
 			sourceTree = "<group>";
@@ -178,7 +179,6 @@
 				224D17302A716FB2000545A2 /* LoginView.swift */,
 				224D17352A717177000545A2 /* RegisterView.swift */,
 				224D17332A717164000545A2 /* AddTaskView.swift */,
-				22DA899B2A93D76C00761640 /* SaveTaskView.swift */,
 				224D17372A7171C4000545A2 /* ProfileView.swift */,
 				224D17392A717346000545A2 /* TasksListView.swift */,
 				224D173B2A717354000545A2 /* TaskView.swift */,
@@ -511,7 +511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tim.iDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -548,7 +548,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tim.iDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
